@@ -18,4 +18,4 @@ async def ping(ctx):
     embed.add_field(name="latency", value="{} ms".format(int(ctx.bot.latency*1000)))
     await ctx.send(embed=embed)
     
-bot.run('NjEzNDgyNzc2NDEwNDU2MDY0.XW1pZA.Il_WsSEgxJ7kvK0JlUlit1YAVrs')
+bot.run('NjEzNDgyNzc2NDEwNDU2MDY0.XW2B0A.b0MSGq1e6-dvCmEfkAnxfwZBB5o')
