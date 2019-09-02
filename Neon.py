@@ -1,6 +1,7 @@
 import discord 
 from discord.ext import commands
 import asyncio
+import time
 
 bot = commands.Bot(command_prefix='*')
 
@@ -18,4 +19,4 @@ async def ping(ctx):
     embed.add_field(name="latency", value="{} ms".format(int(ctx.bot.latency*1000)))
     await ctx.send(embed=embed)
     
-bot.run('NjE2NjE5MTI0NzMwMzYzOTI0.XW2DVA.jVge5gyb2VkuGcWEVcwucXQc7OA')
+bot.run(os.getenv('Token'))
