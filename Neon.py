@@ -6,11 +6,14 @@ import asyncio
 bot = commands.Bot(command_prefix='*')
 TOKEN = os.environ['TOKEN']
 
-@bot.event
+@bot.listen()
 async def on_ready():
-    print('Bot is ready!')
+    print('Logged in as')
     print(bot.user.name)
     print(bot.user.id)
+    print('-----------')
+    game = discord.Game("In Development")
+    await bot.change_presence(status=discord.Status.online, activity=game)
 
 @bot.command()
 @commands.cooldown(1, 3, commands.BucketType.user)
