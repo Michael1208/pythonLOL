@@ -2,6 +2,7 @@ import discord
 import os
 from discord.ext import commands
 import asyncio
+from discord.ext.commands import has_permissions
 
 bot = commands.Bot(command_prefix='*')
 TOKEN = os.environ['TOKEN']
@@ -22,5 +23,13 @@ async def ping(ctx):
     embed = discord.Embed(title="Neon's Ping!", color=0x0084FD)
     embed.add_field(name="latency", value="{} ms".format(int(ctx.bot.latency*1000)))
     await ctx.send(embed=embed)
+
+@bot.command()
+@has_permissions(ban_members=True)
+async def ban(ctx, member:discord.Member=None, *, reason=None):
+    if member is None:
+        await ctx.send("Please mention a user to ban")
+    else:
+        await member.ban(reason=reason)
 
 bot.run(TOKEN)
