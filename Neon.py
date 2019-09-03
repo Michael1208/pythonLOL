@@ -46,10 +46,11 @@ async def help(ctx):
     embed = discord.Embed(title="Neon - Help & Documentation", color=0x6AA84F)
     embed.add_field(name='***help**', value="Show this message", inline=False)
     embed.add_field(name="***ping**",     value="Returns pong!", inline=False)
-    embed.add_field(name="***purge**", value="Purges (amount of messages! (Requires Manage Messages)", inline=False)
-    embed.add_field(name="***ban**", value="Bans a user from the server! (Requires BAN Permissions)", inline=False)
-    embed.add_field(name="**Invite Neon**", value="[Invite Neon](https://discordapp.com/oauth2/authorize?client_id=616619124730363924&scope=bot&permissions=2146958847)", inline=False)
+    embed.add_field(name="***purge**", value="Purges (amount) of messages! (Requires Manage Messages)", inline=False)
+    embed.add_field(name="***ban**", value="Bans a user from the server! (Requires Ban Permissions)", inline=False)
     embed.add_field(name="***echo**", value="Repeats your message!", inline=False)
+    embed.add_field(name="***kick**", value="Kicks a user off the server! (Requires Kick Permissions)", inline=False)
+    embed.add_field(name="**Invite Neon**", value="[Invite Neon](https://discordapp.com/oauth2/authorize?client_id=616619124730363924&scope=bot&permissions=2146958847)", inline=False)
     await ctx.send(embed=embed)
 
 status = cycle(['*help','In Development'])
@@ -94,5 +95,13 @@ async def play(ctx, url):
 	player = await voice_bot.create_ytdl_player(url)
 	players[server.id] = player
 	player.start()
+
+@bot.command()
+@has_permissions(kick_members=True)
+async def kick(ctx, member:discord.Member=None, *, reason=None):
+    if member is None:
+        await ctx.send("Please mention a user to kick")
+    else:
+        await member.kick(reason=reason)
 
 bot.run(TOKEN)
