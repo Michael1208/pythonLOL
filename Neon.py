@@ -44,7 +44,7 @@ async def help(ctx):
     embed.add_field(name="``*ping``",     value="Returns pong!", inline=False)
     embed.add_field(name="``*purge``", value="Purges (amount of messages!", inline=False)
     embed.add_field(name="``*ban``", value="Bans a user from the server! (BAN Permissions)", inline=False)
-    await ctx.send(embed=embed)
-    embed.add_field(name="**Invite Neon**", value="[Invite Neon](https://discordapp.com/oauth2/authorize?client_id=616619124730363924&scope=bot&permissions=2146958847)")
+    embed.add_field(name="**Invite Neon**", value="[Invite Neon](https://discordapp.com/oauth2/authorize?client_id=616619124730363924&scope=bot&permissions=2146958847)", inline=False)
+     await ctx.send(embed=embed)
 
 bot.run(TOKEN)
