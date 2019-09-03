@@ -72,7 +72,7 @@ async def echo(ctx,*,args):
 	output = ' '
 	for word in args:
 		output += word
-		output += ' '
+		output += ''
 	await ctx.send(output)
  
 
