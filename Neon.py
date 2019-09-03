@@ -3,6 +3,7 @@ import os
 from discord.ext import commands
 import asyncio
 from discord.ext.commands import has_permissions
+import time
 
 bot = commands.Bot(command_prefix='*')
 TOKEN = os.environ['TOKEN']
