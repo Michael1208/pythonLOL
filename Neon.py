@@ -97,7 +97,7 @@ async def play(ctx, url):
 
 @bot.event
 async def on_member_join(member):
-	role = discord.utils.get(member.server.roles, name='Member')
+	role = discord.utils.get(member.server.roles, name='Members')
 	await bot.add_roles(member, role)
 
 bot.run(TOKEN)
