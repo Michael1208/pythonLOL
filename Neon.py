@@ -50,6 +50,7 @@ async def help(ctx):
     embed.add_field(name="***ban**", value="Bans a user from the server! (Requires Ban Permissions)", inline=False)
     embed.add_field(name="***echo**", value="Repeats your message!", inline=False)
     embed.add_field(name="***kick**", value="Kicks a user off the server! (Requires Kick Permissions)", inline=False)
+    embed.add_field(name="***unban**", value="Unbans a user that was banned from the server! (Requires Ban Permissions)", inline=False)
     embed.add_field(name="**Invite Neon**", value="[Invite Neon](https://discordapp.com/oauth2/authorize?client_id=616619124730363924&scope=bot&permissions=2146958847)", inline=False)
     await ctx.send(embed=embed)
 
@@ -103,5 +104,17 @@ async def kick(ctx, member:discord.Member=None, *, reason=None):
         await ctx.send("Please mention a user to kick")
     else:
         await member.kick(reason=reason)
+
+@bot.command()
+async def unban(ctx, *, member):
+    banned_users = await ctx.guild.bans()
+    member_name, member_discriminator = member.split('#')
+    
+    for ban_entry in banned_users:
+        user = ban_entry.user
+        
+        if (user.name, user.discriminator) == (member_name, member_discriminator):
+            await ctx.guild.unban(user)
+            await ctx.send(f"Unbanned {user.mention}")
 
 bot.run(TOKEN)
