@@ -73,7 +73,7 @@ async def echo(ctx,*,args):
 	for word in args:
 		output += word
 		output += ' '
-	await bot.say(output)
+	await ctx.send(output)
  
 
 bot.run(TOKEN)
