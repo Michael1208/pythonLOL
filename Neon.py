@@ -51,7 +51,7 @@ async def help(ctx):
     embed.add_field(name="**Invite Neon**", value="[Invite Neon](https://discordapp.com/oauth2/authorize?client_id=616619124730363924&scope=bot&permissions=2146958847)", inline=False)
     await ctx.send(embed=embed)
 
-status = cycle(['guildcount = len(ctx.bot.guilds)','*help','In Development'])
+status = cycle(['guildcount = len(bot.guilds)','*help','In Development'])
 
 @bot.event
 
