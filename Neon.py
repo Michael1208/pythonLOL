@@ -83,8 +83,8 @@ async def join(ctx):
 	
 @bot.command(pass_context=True)
 async def leave(ctx):
-	server = ctx.message.server
-	voice_bot = bot.voice_bot_in(server)
+	guild = ctx.message.guild
+	voice_bot = guild.voice_bot_in(server)
 	await voice_bot.disconnect()
 	
 @bot.command(pass_context=True)
