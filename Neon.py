@@ -11,4 +11,4 @@ async def on_ready():
     print(bot.user.name)
     print(bot.user.id)
 
-bot.run(os.environ['TOKEN'])
+bot.run(os.getenv['TOKEN'])
