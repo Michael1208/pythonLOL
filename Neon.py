@@ -1,9 +1,13 @@
 import discord 
-import os
 from discord.ext import commands
 import asyncio
 from discord.ext.commands import has_permissions
 import time
+import random
+import json
+import os
+from discord.ext import commands, tasks
+from itertools import cycle
 
 bot = commands.Bot(command_prefix='*')
 TOKEN = os.environ['TOKEN']
@@ -46,5 +50,21 @@ async def help(ctx):
     embed.add_field(name="``*ban``", value="Bans a user from the server! (BAN Permissions)", inline=False)
     embed.add_field(name="**Invite Neon**", value="[Invite Neon](https://discordapp.com/oauth2/authorize?client_id=616619124730363924&scope=bot&permissions=2146958847)", inline=False)
     await ctx.send(embed=embed)
+
+status = cycle(['guildcount = len(ctx.bot.guilds)','*help','In Development'])
+
+@bot.event
+
+async def on_ready():
+
+	change_status.start()
+
+	print("Neon has started!")				
+		
+@tasks.loop(seconds=15)
+
+async def change_status():
+
+	await bot.change_presence(activity=discord.Game(next(status)))
 
 bot.run(TOKEN)
