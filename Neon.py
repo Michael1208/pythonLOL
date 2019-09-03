@@ -68,11 +68,12 @@ async def change_status():
 	await bot.change_presence(activity=discord.Game(next(status)))
 
 @bot.command()
-async def echo(*args):
+async def echo(ctx,*,args):
 	output = ' '
 	for word in args:
 		output += word
 		output += ' '
 	await bot.say(output)
+ 
 
 bot.run(TOKEN)
