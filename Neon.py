@@ -76,5 +76,23 @@ async def echo(ctx,*,args):
 		output += ''
 	await ctx.send(output)
  
+@bot.command(pass_context=True)
+async def join(ctx):
+	channel = ctx.message.author.voice.voice_channel
+	await bot.join_voice_channel(channel)
+	
+@bot.command(pass_context=True)
+async def leave(ctx):
+	server = ctx.message.server
+	voice_bot = bot.voice_bot_in(server)
+	await voice_bot.disconnect()
+	
+@bot.command(pass_context=True)
+async def play(ctx, url):
+	server = ctx.message.server
+	voice_bot = bot.voice_bot_in(server)
+	player = await voice_bot.create_ytdl_player(url)
+	players[server.id] = player
+	player.start()
 
 bot.run(TOKEN)
