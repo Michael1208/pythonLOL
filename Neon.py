@@ -18,7 +18,6 @@ async def on_ready():
     await bot.change_presence(status=discord.Status.online, activity=game)
 
 @bot.command()
-@commands.cooldown(1, 3, commands.BucketType.user)
 async def ping(ctx):
     start = time.monotonic()
     embed = discord.Embed(title="Neon's Ping!", color=0x0084FD)
