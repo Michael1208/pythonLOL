@@ -69,7 +69,7 @@ async def change_status():
 
 @bot.command()
 async def echo(ctx,*,args):
-	output = ' '
+	output = ''
 	for word in args:
 		output += word
 		output += ''
