@@ -50,8 +50,7 @@ async def help(ctx):
     embed.add_field(name="***ban**", value="Bans a user from the server! (Requires BAN Permissions)", inline=False)
     embed.add_field(name="**Invite Neon**", value="[Invite Neon](https://discordapp.com/oauth2/authorize?client_id=616619124730363924&scope=bot&permissions=2146958847)", inline=False)
     embed.add_field(name="***echo**", value="Repeats your message!", inline=False)
-
-await ctx.send(embed=embed)
+    await ctx.send(embed=embed)
 
 status = cycle(['*help','In Development'])
 
