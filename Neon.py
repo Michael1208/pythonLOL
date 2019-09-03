@@ -76,10 +76,10 @@ async def echo(ctx,*,args):
 		output += ''
 	await ctx.send(output)
  
-@client.command(pass_context=True)
+@bot.command(pass_context=True)
 async def join(ctx):
 	channel = ctx.message.author.voice.voice_channel
-	await client.join_voice_channel(channel)
+	await bot.join_voice_channel(channel)
 	
 @bot.command(pass_context=True)
 async def leave(ctx):
