@@ -9,6 +9,6 @@ bot = commands.Bot(command_prefix='*')
 async def on_ready():
     print('Bot is ready!')
     print(bot.user.name)
-    print(bot.user.id
-          
+    print(bot.user.id)
+
 bot.run(os.environ['TOKEN'])
