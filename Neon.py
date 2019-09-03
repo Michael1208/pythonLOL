@@ -33,4 +33,8 @@ async def ban(ctx, member:discord.Member=None, *, reason=None):
     else:
         await member.ban(reason=reason)
 
+@bot.command()
+async def purge(ctx, amount=5):
+	await ctx.channel.purge(limit=amount)
+
 bot.run(TOKEN)
