@@ -7,6 +7,7 @@ import time
 
 bot = commands.Bot(command_prefix='*')
 TOKEN = os.environ['TOKEN']
+bot.remove_command('help')
 
 @bot.listen()
 async def on_ready():
@@ -35,5 +36,15 @@ async def ban(ctx, member:discord.Member=None, *, reason=None):
 @bot.command()
 async def purge(ctx, amount=5):
 	await ctx.channel.purge(limit=amount)
+
+@bot.command()
+async def help(ctx):
+    embed = discord.Embed(title="Neon - Help & Documentation", color=0x6AA84F)
+    embed.add_field(name='``*help``', value="Show this message", inline=False)
+    embed.add_field(name="``*ping``",     value="Returns pong!", inline=False)
+    embed.add_field(name="``*purge``", value="Purges (amount of messages!", inline=False)
+    embed.add_field(name="``*ban``", value="Bans a user from the server! (BAN Permissions)", inline=False)
+    await ctx.send(embed=embed)
+    embed.add_field(name="**Invite Neon**", value="[Invite Neon](https://discordapp.com/oauth2/authorize?client_id=616619124730363924&scope=bot&permissions=2146958847)")
 
 bot.run(TOKEN)
