@@ -161,7 +161,7 @@ async def balance(ctx):
     await bot.reply(f'you have {currency.data[member.id]} {currency.data["name"]}')
 
 @bot.command(aliases=['leaderboards'])
-async def leaderboard(ctx):
+async def leaderboard():
     ''': View the server leaderboad'''
     members=[(ID,score) for ID,score in currency.data.items() if ID !='name']
     if len(members)==0:
@@ -171,13 +171,17 @@ async def leaderboard(ctx):
     players=''
     scores=''
     for ID,score in ordered:
-        player=discord.utils.get(bot.get_all_members(),id=ID)
+       
+print("Test")
+
+ player=discord.utils.get(bot.get_all_members(),id=ID)
         players+=player.mention+'\n'
         scores+=str(score)+'\n'
     embed=discord.Embed(title='Leaderboard')
     embed.add_field(name="Player", value=f"{player}")
-    embed.add_field(name="Player", value=f"{scores}") 
+embed.add_field(name="Player", value=f"{scores}") 
     await bot.say(embed=embed)
+ 
 
 print("Are you dead?")
 
