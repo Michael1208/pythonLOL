@@ -160,29 +160,23 @@ async def balance(ctx):
     check_id(member.id)
     await bot.reply(f'you have {currency.data[member.id]} {currency.data["name"]}')
 
-@bot.command()
-    async def leaderboard(self, top : int=10):
-        """Prints out the leaderboard
-        Defaults to top 10""" #Originally coded by Airenkun - edited by irdumb
-        if top < 1:
-            top = 10
-        bank_sorted = sorted(self.bank.items(), key=lambda x: x[1]["balance"], reverse=True)
-        if len(bank_sorted) < top:
-            top = len(bank_sorted)
-        topten = bank_sorted[:top]
-        highscore = ""
-        place = 1
-        for id in topten:
-            highscore += str(place).ljust(len(str(top))+1)
-            highscore += (id[1]["name"]+" ").ljust(23-len(str(id[1]["balance"])))
-            highscore += str(id[1]["balance"]) + "\n"
-            place += 1
-        if highscore:
-            if len(highscore) < 1985:
-                await self.bot.say("```py\n"+highscore+"```")
-            else:
-                await self.bot.say("The leaderboard is too big to be displayed. Try with a lower <top> parameter.")
-        else:
-            await self.bot.say("There are no accounts in the bank.")
+@@bot.command(aliases=['leaderboards'])
+async def leaderboard():
+    ''': View the server leaderboad'''
+    members=[(ID,score) for ID,score in currency.data.items() if ID !='name']
+    if len(members)==0:
+        await bot.say('I have nothing to show')
+        return
+    ordered=sorted(members,key=lambda x:x[1] ,reverse=True )
+    players=''
+    scores=''
+    for ID,score in ordered:
+        player=discord.utils.get(bot.get_all_members(),id=ID)
+        players+=player.mention+'\n'
+        scores+=str(score)+'\n'
+    embed=discord.Embed(title='Leaderboard')
+    embed.add_field(name='Player',value=players)
+    embed.add_field(name='Score',value=scores)
+    await bot.say(embed=embed)
 
 bot.run(TOKEN)
