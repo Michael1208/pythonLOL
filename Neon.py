@@ -146,4 +146,11 @@ async def unmute_error(ctx, error):
     if isinstance(error, commands.CheckFailure):
         await ctx.send("You are not allowed to unmute people")
 
+@bot.command()
+async def invite(ctx):
+	embed = discord.Embed(title="Neon - Invites", color=0x6AA84F)
+	embed.add_field(name='**Invite Neon**', value="[Invite Neon](https://discordapp.com/oauth2/authorize?client_id=616619124730363924&scope=bot&permissions=2146958847)", inline=False)
+	embed.add_field(name='**Invite Neon**', value="[Support](https://discord.gg/WqtTxNV)", inline=False)
+	await ctx.send(embed=embed)
+
 bot.run(TOKEN)
