@@ -132,7 +132,7 @@ async def mute_error(ctx, error):
 	if isinstantce(error, commands.CheckFailure):
 		await ctx.send("You are not allowed to mute people!")
 	
-@bot.command()
+@bot.command(aliases=['um'])
 async def unmute(ctx, member: discord.Member=None):
 	role = discord.utils.get(ctx.guild.roles, name="Muted")
 	if not member:
