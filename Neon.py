@@ -155,10 +155,28 @@ async def invite(ctx):
 
 @bot.command(pass_context=True)
 async def balance(ctx):
-    ''': Check your stash!'''
+    ''': Check your balance!'''
     member=ctx.message.author
     check_id(member.id)
     await bot.reply(f'you have {currency.data[member.id]} {currency.data["name"]}')
 
+@bot.command(aliases=['leaderboards'])
+async def leaderboard():
+    ''': View the server leaderboad'''
+    members=[(ID,score) for ID,score in currency.data.items() if ID !='name']
+    if len(members)==0:
+        await bot.say('I have nothing to show')
+        return
+    ordered=sorted(members,key=lambda x:x[1] ,reverse=True )
+    players=''
+    scores=''
+    for ID,score in ordered:
+        player=discord.utils.get(bot.get_all_members(),id=ID)
+        players+=player.mention+'\n'
+        scores+=str(score)+'\n'
+    embed=discord.Embed(title='Leaderboard')
+    embed.add_field(name='Player',value=players)
+    embed.add_field(name='Score',value=scores)
+    await bot.say(embed=embed)
 
 bot.run(TOKEN)
