@@ -179,4 +179,6 @@ async def leaderboard(ctx):
     embed.add_field(name="Player", value=f"{scores}") 
     await bot.say(embed=embed)
 
+print("Are you dead?")
+
 bot.run(TOKEN)
