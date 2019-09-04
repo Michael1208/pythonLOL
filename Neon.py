@@ -121,18 +121,17 @@ async def unban(ctx, *, member):
 
 @bot.command(aliases=['m'])
 @has_permissions(mute_members=True)
-async def mute(ctx, member: discord.Member=None):   
- role = discord.utils.get(ctx.guild.roles, name="Muted")   
- if not member:        
-    await ctx.send("Please specify a member")        
-    return    
- await member.add_roles(role)    
- await ctx.send("Added role!")
-
+async def mute(ctx, member: discord.Member=None):
+	role = discord.utils.get(ctx.guild.roles, name="Muted")
+	if not member:
+		await ctx.send("Please specify a member")
+		return
+	await member.add_roles(role)
+	await ctx.send("Added role!")
 @mute.error
-async def mute_error(ctx, error):   
- if isinstantce(error, commands.CheckFailure):        
-     await ctx.send("You are not allowed to mute people!")
+async def unmute_error(ctx, error):
+	if isinstantce(error, commands.CheckFailure):
+		await ctx.send("You are not allowed to unmute people!")
 	
 @bot.command(aliases=['um'])
 @has_permissions(mute_members=True)
