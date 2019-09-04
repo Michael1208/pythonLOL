@@ -160,7 +160,7 @@ async def balance(ctx):
     check_id(member.id)
     await bot.reply(f'you have {currency.data[member.id]} {currency.data["name"]}')
 
-@@bot.command(aliases=['leaderboards'])
+@bot.command(aliases=['leaderboards'])
 async def leaderboard():
     ''': View the server leaderboad'''
     members=[(ID,score) for ID,score in currency.data.items() if ID !='name']
