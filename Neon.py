@@ -126,8 +126,8 @@ async def mute(ctx, member: discord.Member=None):
  if not member:        
     await ctx.send("Please specify a member")        
     return    
-await member.add_roles(role)    
-await ctx.send("Added role!")
+ await member.add_roles(role)    
+ await ctx.send("Added role!")
 
 @mute.error
 async def mute_error(ctx, error):   
