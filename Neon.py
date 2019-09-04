@@ -153,4 +153,12 @@ async def invite(ctx):
 	embed.add_field(name='**Support Server**', value="[Support](https://discord.gg/WqtTxNV)", inline=False)
 	await ctx.send(embed=embed)
 
+@bot.command(pass_context=True)
+async def balance(ctx):
+    ''': Check your stash!'''
+    member=ctx.message.author
+    check_id(member.id)
+    await bot.reply(f'you have {currency.data[member.id]} {currency.data["name"]}')
+
+
 bot.run(TOKEN)
