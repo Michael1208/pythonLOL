@@ -119,7 +119,7 @@ async def unban(ctx, *, member):
             await ctx.guild.unban(user)
             await ctx.send(f"Unbanned {user.mention}")
 
-@bot.command(aliases=['m'])
+@bot.command()
 @has_permissions(mute_members=True)
 async def mute(ctx, member: discord.Member=None):
 	role = discord.utils.get(ctx.guild.roles, name="Muted")
@@ -128,6 +128,7 @@ async def mute(ctx, member: discord.Member=None):
 		return
 	await member.add_roles(role)
 	await ctx.send("Added role!")
+
 @mute.error
 async def unmute_error(ctx, error):
 	if isinstantce(error, commands.CheckFailure):
@@ -142,6 +143,7 @@ async def unmute(ctx, member: discord.Member=None):
 		return
 	await member.remove_roles(role)
 	await ctx.send("Role removed.")
+
 @mute.error
 async def unmute_error(ctx, error):
 	if isinstantce(error, commands.CheckFailure):
