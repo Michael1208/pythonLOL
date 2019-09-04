@@ -9,7 +9,7 @@ import os
 from discord.ext import commands, tasks
 from itertools import cycle
 
-bot = commands.Bot(command_prefix='*')
+bot = commands.Bot(command_prefix='n.')
 TOKEN = os.environ['TOKEN']
 bot.remove_command('help')
 
@@ -44,13 +44,15 @@ async def purge(ctx, amount=5):
 @bot.command()
 async def help(ctx):
     embed = discord.Embed(title="Neon - Help & Documentation", color=0x6AA84F)
-    embed.add_field(name='***help**', value="Show this message", inline=False)
-    embed.add_field(name="***ping**",     value="Returns pong!", inline=False)
-    embed.add_field(name="***purge**", value="Purges (amount) of messages! (Requires Manage Messages)", inline=False)
-    embed.add_field(name="***ban**", value="Bans a user from the server! (Requires Ban Permissions)", inline=False)
-    embed.add_field(name="***echo**", value="Repeats your message!", inline=False)
-    embed.add_field(name="***kick**", value="Kicks a user off the server! (Requires Kick Permissions)", inline=False)
-    embed.add_field(name="***unban**", value="Unbans a user that was banned from the server! (Requires Ban Permissions)", inline=False)
+    embed.add_field(name='**n.help**', value="Show this message", inline=False)
+    embed.add_field(name="**n.ping**",     value="Returns pong!", inline=False)
+    embed.add_field(name="**n.purge**", value="Purges (amount) of messages! (Requires Manage Messages)", inline=False)
+    embed.add_field(name="**n.ban**", value="Bans a user from the server! (Requires Ban Permissions)", inline=False)
+    embed.add_field(name="**n.echo**", value="Repeats your message!", inline=False)
+    embed.add_field(name="**n.kick**", value="Kicks a user off the server! (Requires Kick Permissions)", inline=False)
+    embed.add_field(name="**n.unban**", value="Unbans a user that was banned from the server! (Requires Ban Permissions)", inline=False)
+    embed.add_field(name="**n.mute**", value="Mutes a user on the server! (Requires Mute Permissions)", inline=False)
+    embed.add_field(name="**n.unmute**", value="Unmutes a user on the server! (Requires Mute Permissions)", inline=False)
     embed.add_field(name="**Invite Neon**", value="[Invite Neon](https://discordapp.com/oauth2/authorize?client_id=616619124730363924&scope=bot&permissions=2146958847)", inline=False)
     await ctx.send(embed=embed)
 
@@ -116,5 +118,31 @@ async def unban(ctx, *, member):
         if (user.name, user.discriminator) == (member_name, member_discriminator):
             await ctx.guild.unban(user)
             await ctx.send(f"Unbanned {user.mention}")
+
+@bot.command()
+async def mute(ctx, member: discord.Member=None):
+	role = discord.utils.get(ctx.guild.roles, name="Muted")
+	if not member:
+		await ctx.send("Please specify a member")
+		return
+	await member.add_roles(role)
+	await ctx.send("Added role!")
+@mute.error
+async def mute_error(ctx, error):
+	if isinstantce(error, commands.CheckFailure):
+		await ctx.send("You are not allowed to mute people!")
+	
+@bot.command()
+async def unmute(ctx, member: discord.Member=None):
+	role = discord.utils.get(ctx.guild.roles, name="Muted")
+	if not member:
+		await ctx.send("Please specify a member")
+		return
+	await member.remove_roles(role)
+	await ctx.send("Role removed.")
+@mute.error
+async def unmute_error(ctx, error):
+	if isinstantce(error, commands.CheckFailure):
+		await ctx.send("You are not allowed to unmute people!")
 
 bot.run(TOKEN)
