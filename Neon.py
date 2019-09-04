@@ -133,7 +133,7 @@ async def mute_error(ctx, error):
         await ctx.send("You are not allowed to mute people")
  
  
-@bot.command(aliases=['um'])
+@bot.command()
 @commands.has_permissions(administrator=True)
 async def unmute(ctx, member: discord.Member=None):
     if not member:
