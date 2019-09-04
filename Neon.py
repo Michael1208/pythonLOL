@@ -175,8 +175,8 @@ async def leaderboard():
         players+=player.mention+'\n'
         scores+=str(score)+'\n'
     embed=discord.Embed(title='Leaderboard')
-    embed.add_field(name='Player',value=players)
-    embed.add_field(name='Score',value=scores)
+    embed.add_field(name="Player", value=f"{player}")
+    embed.add_field(name="Player", value=f"{scores}") 
     await bot.say(embed=embed)
 
 bot.run(TOKEN)
