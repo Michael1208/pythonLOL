@@ -120,33 +120,30 @@ async def unban(ctx, *, member):
             await ctx.send(f"Unbanned {user.mention}")
 
 @bot.command()
-@has_permissions(mute_members=True)
+@commands.has_permissions(administrator=True)
 async def mute(ctx, member: discord.Member=None):
-	role = discord.utils.get(ctx.guild.roles, name="Muted")
-	if not member:
-		await ctx.send("Please specify a member")
-		return
-	await member.add_roles(role)
-	await ctx.send("Added role!")
-
+    if not member:
+        await ctx.send("Please specify a member")
+        return
+    role = discord.utils.get(ctx.guild.roles, name="muted")
+    await member.add_roles(role)
 @mute.error
-async def unmute_error(ctx, error):
-	if isinstantce(error, commands.CheckFailure):
-		await ctx.send("You are not allowed to unmute people!")
-	
+async def mute_error(ctx, error):
+    if isinstance(error, commands.CheckFailure):
+        await ctx.send("You are not allowed to mute people")
+ 
+ 
 @bot.command(aliases=['um'])
-@has_permissions(mute_members=True)
+@commands.has_permissions(administrator=True)
 async def unmute(ctx, member: discord.Member=None):
-	role = discord.utils.get(ctx.guild.roles, name="Muted")
-	if not member:
-		await ctx.send("Please specify a member")
-		return
-	await member.remove_roles(role)
-	await ctx.send("Role removed.")
-
+    if not member:
+        await ctx.send("Please specify a member")
+        return
+    role = discord.utils.get(ctx.guild.roles, name="muted")
+    await member.remove_roles(role)
 @mute.error
 async def unmute_error(ctx, error):
-	if isinstantce(error, commands.CheckFailure):
-		await ctx.send("You are not allowed to unmute people!")
+    if isinstance(error, commands.CheckFailure):
+        await ctx.send("You are not allowed to unmute people")
 
 bot.run(TOKEN)
