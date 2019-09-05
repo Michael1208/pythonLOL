@@ -172,7 +172,7 @@ async def leaderboard():
     scores=''
     for ID,score in ordered:
 
- player=discord.utils.get(bot.get_all_members(),id=ID)
+player=discord.utils.get(bot.get_all_members(),id=ID)
         players+=player.mention+'\n'
         scores+=str(score)+'\n'
     embed=discord.Embed(title='Leaderboard')
