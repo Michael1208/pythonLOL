@@ -52,6 +52,7 @@ async def help(ctx):
     embed.add_field(name="**n.unban**", value="Unbans a user that was banned from the server! (Requires Ban Permissions)", inline=False)
     embed.add_field(name="**n.mute**", value="Mutes a user on the server! (Requires Mute Permissions)", inline=False)
     embed.add_field(name="**n.unmute**", value="Unmutes a user on the server! (Requires Mute Permissions)", inline=False)
+    embed.add_field(name="**n.botinfo**", value="Get information on the bot and the developers!", inline=False)
     embed.add_field(name="**Invite Neon**", value="[Invite Neon](https://discordapp.com/oauth2/authorize?client_id=616619124730363924&scope=bot&permissions=2146958847)", inline=False)
     await ctx.send(embed=embed)
 
