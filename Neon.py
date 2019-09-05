@@ -196,4 +196,10 @@ async def userinfo(ctx, member: discord.Member):
 	
 	await ctx.send(embed=embed)
 
+@bot.command()
+async def changeprefix(ctx, prefixh):
+    pref.prefix = prefixh
+    bot = command_prefix=prefixh
+    await ctx.send('Prefix changed to {}'.format(prefixh))
+
 bot.run(TOKEN)
