@@ -202,4 +202,15 @@ async def changeprefix(ctx, prefixh):
     bot = command_prefix=prefixh
     await ctx.send('Prefix changed to {}'.format(prefixh))
 
+@bot.command(pass_context=True)
+async def register(ctx):
+    id = ctx.message.author.id
+    channel = ctx.message.channel
+    if id not in Credits:
+        Credits[id] = 100
+        await channel.send(f"You are now registered and have been given 100 Credits {ctx.message.author.mention}")
+        _save()
+    else:
+        await channel.send(f"You already have an account {ctx.message.author.mention}")
+
 bot.run(TOKEN)
