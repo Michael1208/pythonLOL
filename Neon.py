@@ -125,7 +125,7 @@ async def mute(ctx, member: discord.Member=None):
     if not member:
         await ctx.send("Please specify a member")
         return
-    role = discord.utils.get(ctx.guild.roles, name="muted")
+    role = discord.utils.get(ctx.guild.roles, name="Muted")
     await member.add_roles(role)
 @mute.error
 async def mute_error(ctx, error):
@@ -139,7 +139,7 @@ async def unmute(ctx, member: discord.Member=None):
     if not member:
         await ctx.send("Please specify a member")
         return
-    role = discord.utils.get(ctx.guild.roles, name="muted")
+    role = discord.utils.get(ctx.guild.roles, name="Muted")
     await member.remove_roles(role)
 @mute.error
 async def unmute_error(ctx, error):
