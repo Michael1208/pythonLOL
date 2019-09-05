@@ -171,8 +171,6 @@ async def leaderboard():
     players=''
     scores=''
     for ID,score in ordered:
-       
-print('Are you dead Neon?')
 
  player=discord.utils.get(bot.get_all_members(),id=ID)
         players+=player.mention+'\n'
