@@ -152,6 +152,18 @@ async def invite(ctx):
 	embed.add_field(name='**Support Server**', value="[Support](https://discord.gg/WqtTxNV)", inline=False)
 	await ctx.send(embed=embed)
 
+@bot.command()
+async def botinfo(ctx):
+    embed=discord.Embed(title="Join The Support Server", url="https://discord.gg/WqtTxNV", description="**About Neon Bot**", color=0xff3899)
+    embed.set_author(name="Neon Bot",, icon_url="https://cdn.discordapp.com/avatars/616619124730363924/6ad4db462a2e98a94b69dc5a8bd7534f.png?")
+    embed.set_thumbnail(url="https://cdn.discordapp.com/avatars/616619124730363924/6ad4db462a2e98a94b69dc5a8bd7534f.png?")
+    embed.add_field(name=📋What Is Neon?📋, value=Neon Is A Bot Coded In Discord.py Rewrite It Has Multiple Features Such As Moderation, Fun And, Music (Music In Development) , inline=True)
+    embed.add_field(name=👤The Bot Owners👤, value=Bot Developers, inline=True)
+    embed.add_field(name=❤️Kyle♡#1849❤️, value=☢️YosherZ Is Just An Average Guy Born On December 9th 2004 Who Likes To Code And Use Discord ☢️, inline=True)
+    embed.add_field(name=❤️Lost♡#3910❤️, value=😎Lost Is Again Just An Average Guy Who Likes Coding Born June 8th 2005😎, inline=True)
+    embed.set_footer(text="Neon Bot")
+    await ctx.send(embed=embed)
+										
 @bot.command(pass_context=True)
 async def balance(ctx):
     ''': Check your balance!'''
