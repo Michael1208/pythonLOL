@@ -218,15 +218,4 @@ async def level(self, ctx, user: discord.Member = None):
 
             await ctx.send(embed=embed)
 
-@bot.command()
-async def help mod(ctx):
-    embed = discord.Embed(title="Neon - Moderation Commands", color=0x6AA84F)
-    embed.add_field(name="``n.ban``", value=" ``Bans a user from the server (Requires Ban Permissions!)", inline=False)
-    embed.add_field(name="``n.unban``",     value="``Unbans a user that was banned from the server (Requires Ban Permissions!)", inline=False)
-    embed.add_field(name="``n.kick``", value="Kicks a user from the server (Requires Kick Permissions!)", inline=False)
-    embed.add_field(name="``n.purge``", value="Clears (amount) of message (Requires Manage Messages Permissions!)", inline=False)
-    embed.add_field(name="``n.mute``", value="Mutes a user on the server (Requires Mute Permissions!)", inline=False)
-    embed.add_field(name="``n.unmute``", value="Unmutes a user on the server that was muted (Requires Mute Permissions!)", inline=False)
-    await ctx.send(embed=embed)
-
 bot.run(TOKEN)
