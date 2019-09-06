@@ -76,7 +76,9 @@ async def change_status():
 
 @bot.command()
 async def echo(ctx, *, text=None):
-    if text == '@everyone;@here':
+    if text == '@everyone':
+        await ctx.send("Please don't ping everyone")
+    if text == '@here':
         await ctx.send("Please don't ping everyone")
     else:
         await ctx.send(f"{text}")
