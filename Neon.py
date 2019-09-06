@@ -43,8 +43,8 @@ async def purge(ctx, amount=5):
 @bot.command()
 async def help(ctx):
     embed = discord.Embed(title="Neon - Help & Documentation", color=0x6AA84F)
-    embed.add_field(name='**General Commands**', value=" n.help general - Sends you the general commands", inline=False)
-    embed.add_field(name="**Moderation Commands**",     value="n.help mod!", inline=False)
+    embed.add_field(name='**General Commands**', value=" ``n.help general`` - Sends you the general commands", inline=False)
+    embed.add_field(name="**Moderation Commands**",     value="``n.help mod`` - Sends you the moderation commands", inline=False)
     embed.add_field(name="**Invite Neon**", value="[Invite Neon](https://discordapp.com/oauth2/authorize?client_id=616619124730363924&scope=bot&permissions=2146958847)", inline=False)
     await ctx.send(embed=embed)
 
@@ -217,5 +217,16 @@ async def level(self, ctx, user: discord.Member = None):
             embed.add_field(name="XP", value=int(user[0]['xp']))
 
             await ctx.send(embed=embed)
+
+@bot.command()
+async def help mod(ctx):
+    embed = discord.Embed(title="Neon - Moderation Commands", color=0x6AA84F)
+    embed.add_field(name="``n.ban``", value=" ``Bans a user from the server (Requires Ban Permissions!)", inline=False)
+    embed.add_field(name="``n.unban``",     value="``Unbans a user that was banned from the server (Requires Ban Permissions!)", inline=False)
+    embed.add_field(name="``n.kick``", value="Kicks a user from the server (Requires Kick Permissions!)", inline=False)
+    embed.add_field(name="``n.purge``", value="Clears (amount) of message (Requires Manage Messages Permissions!)", inline=False)
+    embed.add_field(name="``n.mute``", value="Mutes a user on the server (Requires Mute Permissions!)", inline=False)
+    embed.add_field(name="``n.unmute``", value="Unmutes a user on the server that was muted (Requires Mute Permissions!)", inline=False)
+    await ctx.send(embed=embed)
 
 bot.run(TOKEN)
