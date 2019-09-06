@@ -43,8 +43,18 @@ async def purge(ctx, amount=5):
 @bot.command()
 async def help(ctx):
     embed = discord.Embed(title="Neon - Help & Documentation", color=0x6AA84F)
-    embed.add_field(name='**General Commands**', value=" ``n.help general`` - Sends you the general commands", inline=False)
-    embed.add_field(name="**Moderation Commands**",     value="``n.help mod`` - Sends you the moderation commands", inline=False)
+    embed.add_field(name='**n.help**', value="Show this message", inline=False)
+    embed.add_field(name="**n.ping**",     value="Returns pong!", inline=False)
+    embed.add_field(name="**n.purge**", value="Purges (amount) of messages! (Requires Manage Messages)", inline=False)
+    embed.add_field(name="**n.ban**", value="Bans a user from the server! (Requires Ban Permissions)", inline=False)
+    embed.add_field(name="**n.echo**", value="Repeats your message!", inline=False)
+    embed.add_field(name="**n.kick**", value="Kicks a user off the server! (Requires Kick Permissions)", inline=False)
+    embed.add_field(name="**n.unban**", value="Unbans a user that was banned from the server! (Requires Ban Permissions)", inline=False)
+    embed.add_field(name="**n.mute**", value="Mutes a user on the server! (Requires Mute Permissions)", inline=False)
+    embed.add_field(name="**n.unmute**", value="Unmutes a user on the server! (Requires Mute Permissions)", inline=False)
+    embed.add_field(name="**n.botinfo**", value="Get information on the bot and the developers!", inline=False)
+    embed.add_field(name="**n.userinfo**", value="Displays info on the mentioned user", inline=False)
+    embed.add_field(name="**n.invite**", value="Displays bot and support server invite", inline=False)
     embed.add_field(name="**Invite Neon**", value="[Invite Neon](https://discordapp.com/oauth2/authorize?client_id=616619124730363924&scope=bot&permissions=2146958847)", inline=False)
     await ctx.send(embed=embed)
 
@@ -146,7 +156,7 @@ async def invite(ctx):
 
 @bot.command()
 async def botinfo(ctx):
-    embed=discord.Embed(title='[Support Server](https://discord.gg/WqtTxNV)', description="**About Neon Bot**", color=0xff3899)
+    embed=discord.Embed(title='[Support Server](https://discord.gg/WqtTxNV))', description="**About Neon Bot**", color=0xff3899)
     embed.set_author(name="Neon Bot")
     embed.set_thumbnail(url="https://cdn.discordapp.com/avatars/616619124730363924/6ad4db462a2e98a94b69dc5a8bd7534f.png?")
     embed.add_field(name='What Is Neon', value="Neon Is A Bot Coded In Discord.py Rewrite It Has Multiple Features Such As Moderation, Fun And, Music (Music In Development)" , inline=False)
