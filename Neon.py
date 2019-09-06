@@ -75,18 +75,12 @@ async def change_status():
 	await bot.change_presence(activity=discord.Game(next(status)))
 
 @bot.command()
-@commands.has_permissions(administrator=True)
 async def echo(ctx,*,args):
 	output = ''
 	for word in args:
 		output += word
 		output += ''
 	await ctx.send(output)
-@echo.error
-async def mute_error(ctx, error):
-    if isinstance(error, commands.CheckFailure):
-        await ctx.send("You are not allowed to use echo admin perms required")
- 
  
 @bot.command(pass_context=True)
 async def join(ctx):
