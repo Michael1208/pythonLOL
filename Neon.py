@@ -75,12 +75,15 @@ async def change_status():
 	await bot.change_presence(activity=discord.Game(next(status)))
 
 @bot.command()
-async def echo(ctx,*,args):
-	output = ''
-	for word in args:
-		output += word
-		output += ''
-	await ctx.send(output)
+async def echo(ctx, *, args):
+    if args == '@everyone':
+        await ctx.send("Please don't try to ping everyone")
+    else:
+        output = ' '
+        for word in args
+            output += word
+            output += ' '
+        await ctx.send(output)
  
 @bot.command(pass_context=True)
 async def join(ctx):
