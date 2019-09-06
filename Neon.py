@@ -196,12 +196,6 @@ async def userinfo(ctx, member: discord.Member):
 	
 	await ctx.send(embed=embed)
 
-@bot.command()
-async def changeprefix(ctx, prefixh):
-    pref.prefix = prefixh
-    bot = command_prefix=prefixh
-    await ctx.send('Prefix changed to {}'.format(prefixh))
-
 @bot.command(pass_context=True)
 async def register(ctx):
     id = ctx.message.author.id
@@ -212,5 +206,25 @@ async def register(ctx):
         _save()
     else:
         await channel.send(f"You already have an account {ctx.message.author.mention}")
+
+@bot.command()
+async def level(self, ctx, user: discord.Member = None):
+        user = ctx.author if not user else user
+        user_id = str(user.id)
+        guild_id = str(ctx.guild.id)
+
+        user = await self.bot.pg_con.fetchrow("SELECT * FROM users WHERE user_id = $1 AND guild_id = $2", user_id, guild_id)
+
+        if not user:
+            await ctx.send("Member doesen't have a level")
+        else:
+            embed = discord.Embed(color=ctx.message.author.color, timestamp=ctx.message.created_at)
+
+            embed.set_author(name=f"Level - {user}", icon_url=self.bot.user.avatar_url)
+
+            embed.add_field(name="Level", value=int(user[0]['lvl']))
+            embed.add_field(name="XP", value=int(user[0]['xp']))
+
+            await ctx.send(embed=embed)
 
 bot.run(TOKEN)
