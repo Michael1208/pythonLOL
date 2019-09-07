@@ -75,11 +75,13 @@ async def change_status():
 	await bot.change_presence(activity=discord.Game(next(status)))
 
 @bot.command()
+@commands.has_permissions(Administrator=True)
 async def echo(ctx, *, text=None):
-    if text == '@everyone':
-        await ctx.send("Please don't ping everyone/here")
-    else:
-        await ctx.send(f"{text}")
+    await ctx.send(f"{text}")
+@echo.error
+async def echo_error(ctx, error):
+    if isinstance(error, commands.CheckFailure):
+        await ctx.send("Administrator Permission Required")
  
 @bot.command(pass_context=True)
 async def join(ctx):
