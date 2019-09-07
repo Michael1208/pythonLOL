@@ -156,7 +156,7 @@ async def invite(ctx):
 
 @bot.command()
 async def botinfo(ctx):
-    embed=discord.Embed(title='[Support Server](https://discord.gg/WqtTxNV))', description="**About Neon Bot**", color=0xff3899)
+    embed=discord.Embed(title='[Support Server](https://discord.gg/WqtTxNV)', description="**About Neon Bot**", color=0xff3899)
     embed.set_author(name="Neon Bot")
     embed.set_thumbnail(url="https://cdn.discordapp.com/avatars/616619124730363924/6ad4db462a2e98a94b69dc5a8bd7534f.png?")
     embed.add_field(name='What Is Neon', value="Neon Is A Bot Coded In Discord.py Rewrite It Has Multiple Features Such As Moderation, Fun And, Music (Music In Development)" , inline=False)
@@ -182,16 +182,16 @@ async def userinfo(ctx, member: discord.Member):
 	
 	embed.set_author(name=f"User Info - {member}")
 	embed.set_thumbnail(url=member.avatar_url)
-	embed.set_footer(text=f"Requested by {ctx.author}", icon_url=ctx.author.avatar_url)
+	embed.set_footer(text=f"Requested By {ctx.author}", icon_url=ctx.author.avatar_url)
 	
 	embed.add_field(name="ID:", value=member.id)
-	embed.add_field(name="Guild name:", value=member.display_name)
+	embed.add_field(name="Guild Username:", value=member.display_name)
 	
-	embed.add_field(name="Created at:", value=member.created_at.strftime("%a, %#d %B %Y, %I:%M %p UTC"))
-	embed.add_field(name="Joined at:", value=member.joined_at.strftime("%a, %#d %B %Y, %I:%M %p UTC"))
+	embed.add_field(name="Account Created At:", value=member.created_at.strftime("%a, %#d %B %Y, %I:%M %p UTC"))
+	embed.add_field(name="Joined Server At:", value=member.joined_at.strftime("%a, %#d %B %Y, %I:%M %p UTC"))
 	
 	embed.add_field(name=f"Roles" , value=" ".join([role.mention for role in roles]))
-	embed.add_field(name="Top role:", value=member.top_role.mention)
+	embed.add_field(name="Top Role:", value=member.top_role.mention)
 	
 	embed.add_field(name="Bot?", value=member.bot)
 	
