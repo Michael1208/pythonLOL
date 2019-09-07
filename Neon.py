@@ -189,8 +189,8 @@ async def userinfo(ctx, member: discord.Member):
 	embed.add_field(name="ID:", value=member.id)
 	embed.add_field(name="Guild Username:", value=member.display_name)
 	
-	embed.add_field(name="Account Created At:", value=member.created_at.strftime("%a, %#d %B %Y, %I:%M %p UTC"))
-	embed.add_field(name="Joined Server At:", value=member.joined_at.strftime("%a, %#d %B %Y, %I:%M %p UTC"))
+	embed.add_field(name="Account Created At:", value=member.created_at.strftime("%a, %#d %B %Y, %I:%M %p EST"))
+	embed.add_field(name="Joined Server At:", value=member.joined_at.strftime("%a, %#d %B %Y, %I:%M %p EST"))
 	
 	embed.add_field(name=f"Roles" , value=" ".join([role.mention for role in roles]))
 	embed.add_field(name="Top Role:", value=member.top_role.mention)
