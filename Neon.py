@@ -233,7 +233,7 @@ async def level(self, ctx, user: discord.Member = None):
 @bot.command(pass_context = True)
 @commands.has_permissions(manage_nicknames=True)     
 async def setnick(ctx, user: discord.Member, *, nickname):
-    await ctx.change_nickname(user, nickname)
-    await ctx.delete_message(ctx.message)
+    await member.edit(nick={role})
+    await ctx.message.delete
 
 bot.run(TOKEN)
