@@ -75,7 +75,7 @@ async def change_status():
 	await bot.change_presence(activity=discord.Game(next(status)))
 
 @bot.command()
-@commands.has_permissions(Administrator=True)
+@commands.has_permissions(administrator=True)
 async def echo(ctx, *, text=None):
     await ctx.send(f"{text}")
 @echo.error
