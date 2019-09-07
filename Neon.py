@@ -37,6 +37,7 @@ async def ban(ctx, member:discord.Member=None, *, reason=None):
         await member.ban(reason=reason)
 
 @bot.command()
+@commands.has_permissions(manage_messages=True)
 async def purge(ctx, amount=5):
 	await ctx.channel.purge(limit=amount)
 
@@ -123,7 +124,7 @@ async def unban(ctx, *, member):
             await ctx.send(f"Unbanned {user.mention}")
 
 @bot.command()
-@commands.has_permissions(administrator=True)
+@commands.has_permissions(mute_members=True)
 async def mute(ctx, member: discord.Member=None):
     if not member:
         await ctx.send("Please specify a member")
@@ -137,7 +138,7 @@ async def mute_error(ctx, error):
  
  
 @bot.command()
-@commands.has_permissions(administrator=True)
+@commands.has_permissions(mute_members=True)
 async def unmute(ctx, member: discord.Member=None):
     if not member:
         await ctx.send("Please specify a member")
