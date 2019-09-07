@@ -134,7 +134,7 @@ async def mute(ctx, member: discord.Member=None):
 @mute.error
 async def mute_error(ctx, error):
     if isinstance(error, commands.CheckFailure):
-        await ctx.send("You are not allowed to mute people or make sure server has role Muted")
+        await ctx.send("Error Check Permissions / Server Needs Role Name Muted Spelt Excatly Like That ")
  
  
 @bot.command()
@@ -148,7 +148,7 @@ async def unmute(ctx, member: discord.Member=None):
 @unmute.error
 async def unmute_error(ctx, error):
     if isinstance(error, commands.CheckFailure):
-        await ctx.send("You are not allowed to unmute people or make sure the server has role Muted")
+        await ctx.send("Error Check Permissions / Server Needs Role Name Muted Spelt Excatly Like That")
 
 @bot.command()
 async def invite(ctx):
