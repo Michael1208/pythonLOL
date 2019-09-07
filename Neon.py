@@ -144,7 +144,7 @@ async def unmute(ctx, member: discord.Member=None):
         return
     role = discord.utils.get(ctx.guild.roles, name="Muted")
     await member.remove_roles(role)
-@mute.error
+@unmute.error
 async def unmute_error(ctx, error):
     if isinstance(error, commands.CheckFailure):
         await ctx.send("You are not allowed to unmute people")
