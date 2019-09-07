@@ -230,4 +230,10 @@ async def level(self, ctx, user: discord.Member = None):
 
             await ctx.send(embed=embed)
 
+@bot.command(pass_context = True)
+@commands.has_permissions(manage_nicknames=True)     
+async def setnick(ctx, user: discord.Member, *, nickname):
+    await ctx.change_nickname(user, nickname)
+    await ctx.delete_message(ctx.message)
+
 bot.run(TOKEN)
