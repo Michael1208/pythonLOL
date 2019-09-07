@@ -232,7 +232,7 @@ async def level(self, ctx, user: discord.Member = None):
 
 @bot.command(pass_context = True)
 @commands.has_permissions(manage_nicknames=True)     
-async def setnick(ctx, member: discord.Member, *, nickname=None):
+async def setnick(ctx, member: discord.Member, *, nickname):
     await member.edit(nick={nickname})
     await ctx.message.delete
 
