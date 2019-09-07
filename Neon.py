@@ -235,6 +235,6 @@ async def level(self, ctx, user: discord.Member = None):
 async def setnick(ctx, member: discord.Member, *, nickname):
     await member.edit(nick=f"{nickname}")
     await ctx.send(f'Nickname Changed') 
-    await ctx.message.delete
+    await ctx.message.delete()
 
 bot.run(TOKEN)
