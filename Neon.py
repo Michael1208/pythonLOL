@@ -231,4 +231,4 @@ async def setnick(ctx, member: discord.Member, *, nickname):
     await ctx.send(f'Nickname Changed For {member.mention} ') 
     await ctx.message.delete()
 
-bot.run(TOKEN)
+bot.run(TOKEN) 
