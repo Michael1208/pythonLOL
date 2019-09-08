@@ -177,11 +177,10 @@ async def balance(ctx):
     await bot.reply(f'you have {currency.data[member.id]} {currency.data["name"]}')
 
 @bot.command()
-async def userinfo(ctx, member: discord.Member = None):       
+async def userinfo(ctx, member: discord.Member):       
 	
     roles = [role for role in member.roles]
-    member = ctx.author if not member else member
-                    
+                        
     embed = discord.Embed(colour=member.color, timestamp=ctx.message.created_at)
     embed.set_author(name=f"User Info - {member}")
     embed.set_thumbnail(url=member.avatar_url)
@@ -192,9 +191,12 @@ async def userinfo(ctx, member: discord.Member = None):
     embed.add_field(name="Joined Server At:", value=member.joined_at.strftime("%a, %#d %B %Y, %I:%M %p EST"))	
     embed.add_field(name=f"Roles {len(roles)}" , value=" ".join([role.mention for role in roles]))
     embed.add_field(name="Top Role:", value=member.top_role.mention)
-    embed.add_field(name="Bot?", value=member.bot)	
-	
+    embed.add_field(name="Bot?", value=member.bot)		
     await ctx.send(embed=embed)
+@userinfo.error
+async def userinfo_error(ctx, error):
+    if isinstance(error, commands.CheckFailure):
+        await ctx.send("Missing Arguments : Member Missing")
 
 @bot.command(pass_context=True)
 async def register(ctx):
