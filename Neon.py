@@ -59,11 +59,10 @@ async def help(ctx):
 
 @bot.event
 async def on_ready():
+    status = cycle(['n.help',f'{len(bot.guilds)} Servers',f'{len(bot.users)} Users'])
     change_status.start()
     print("Neon has started!")
-
-status = cycle(['n.help',f'{len(bot.guilds)} Servers',f'{len(bot.users)} Users'])
-           						
+          						
 @tasks.loop(seconds=15)
 
 async def change_status():
