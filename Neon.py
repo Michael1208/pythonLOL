@@ -245,6 +245,21 @@ async def _8ball(ctx, *, question):
 	'Cannot Tell Right Now']
 
 	await ctx.send(f'Question: {question}\nAnswer: {random.choice(responses)}')
-                    
+		    
+@bot.commands()
+@commands.check(owner)
+async def servers(ctx):
+    string = ''
+for server in bot.servers:
+    string += f"{server.name}\n"
+await ctx.send(f"I'm Currently In These Severs- {string}")
+@servers.error
+async def servers_error(ctx, error):
+    if isinstance(error, commands.CheckFailure):
+        await ctx.send("Bot Developers Only")
+
+ 
+		    
+		 
 
 bot.run(TOKEN) 
