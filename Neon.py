@@ -60,14 +60,13 @@ async def help(ctx):
     await ctx.send(embed=embed)
 
 @bot.event
-
 async def on_ready():
+    status = cycle(['n.help',f'{len(bot.guilds)}',f'{len(bot.members)}'])
+    change_status.start()
+    print("Neon has started!")
+    
 
-        status = cycle(['n.help',f'{len(bot.guilds)}',f'{len(bot.members)}'])
-
-	change_status.start()
-
-	print("Neon has started!")
+        
 				
 		
 @tasks.loop(seconds=15)
