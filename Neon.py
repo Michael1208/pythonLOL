@@ -250,6 +250,9 @@ async def _8ball(ctx, *, question):
 @commands.check(owner)
 async def servers(ctx):
     await ctx.send(f"I'm Currently In These Servers- {bot.guilds}")
-    else ctx.send(f"Bot Developers Only")
+@servers.error
+async def servers_error(ctx, error):
+    if isinstance(error, commands.CheckFailure):
+        await ctx.send("Bot Developers Only")
 
 bot.run(TOKEN) 
