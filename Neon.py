@@ -178,8 +178,9 @@ async def balance(ctx):
 
 @bot.command()
 async def userinfo(ctx, member: discord.Member = None):
-        member = ctx.author if not member else member	
-	roles = [role for role in member.roles]	
+    member = ctx.author if not member else member	
+	roles = [role for role in member.roles]
+                    
 	embed = discord.Embed(colour=member.color, timestamp=ctx.message.created_at)
 	embed.set_author(name=f"User Info - {member}")
 	embed.set_thumbnail(url=member.avatar_url)
@@ -191,7 +192,8 @@ async def userinfo(ctx, member: discord.Member = None):
 	embed.add_field(name=f"Roles {len(roles)}" , value=" ".join([role.mention for role in roles]))
 	embed.add_field(name="Top Role:", value=member.top_role.mention)
 	embed.add_field(name="Bot?", value=member.bot)	
-	await ctx.send(embed=embed)
+	
+    await ctx.send(embed=embed)
 
 @bot.command(pass_context=True)
 async def register(ctx):
