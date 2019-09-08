@@ -63,7 +63,7 @@ async def help(ctx):
 
 async def on_ready():
 
-    status = cycle(['n.help',f'{len(bot.guilds)}',f'{len(bot.members)}'])
+        status = cycle(['n.help',f'{len(bot.guilds)}',f'{len(bot.members)}'])
 
 	change_status.start()
 
