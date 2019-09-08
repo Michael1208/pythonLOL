@@ -18,6 +18,9 @@ async def on_ready():
     print(bot.user.name)
     print(bot.user.id)
     print('-----------')
+  
+def owner(ctx):
+    return ctx.author.id == 349499497774055429 or 505366642230951984
     
 @bot.command()
 async def ping(ctx):
@@ -242,5 +245,11 @@ async def _8ball(ctx, *, question):
 	'Cannot Tell Right Now']
 
 	await ctx.send(f'Question: {question}\nAnswer: {random.choice(responses)}')
+                    
+@bot.command()
+@commands.check(owner)
+async def servers(ctx):
+    await ctx.send(f"I'm Currently In These Servers- {bot.guilds}")
+    else ctx.send(f"Bot Developers Only")
 
 bot.run(TOKEN) 
