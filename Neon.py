@@ -54,6 +54,7 @@ async def help(ctx):
     embed.add_field(name="**n.botinfo**", value="Get information on the bot and the developers!", inline=False)
     embed.add_field(name="**n.userinfo**", value="Displays info on the mentioned user", inline=False)
     embed.add_field(name="**n.invite**", value="Displays bot and support server invite", inline=False)
+    embed.add_field(name="**8Ball**", value="Ask a question recieve your fortune", inline=False)
     embed.add_field(name="**Invite Neon**", value="[Invite Neon](https://discordapp.com/oauth2/authorize?client_id=616619124730363924&scope=bot&permissions=2146958847)", inline=False)
     await ctx.send(embed=embed)
 
@@ -228,5 +229,18 @@ async def setnick(ctx, member: discord.Member, *, nickname):
     await member.edit(nick=f"{nickname}")
     await ctx.send(f'Nickname Changed For {member.mention} ') 
     await ctx.message.delete()
+		    					    
+@bot.command(aliases=['8ball'])
+async def _8ball(ctx, *, question):
+	responses = ['It Is Certain',
+	'Without A Doubt',
+	'Yes Definitely',
+	'You May Rely On It',
+	'Most Likely',
+	'Ask Again Later',
+	'Nope',
+	'Cannot Tell Right Now']
+
+	await ctx.send(f'Question: {question}\nAnswer: {random.choice(responses)}')
 
 bot.run(TOKEN) 
