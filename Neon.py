@@ -246,17 +246,5 @@ async def _8ball(ctx, *, question):
 
 	await ctx.send(f'Question: {question}\nAnswer: {random.choice(responses)}')
                     
-@bot.command()
-@commands.check(owner)
-async def servers(ctx):
-    await ctx.send(f"string = ''
-
-for server in bot.servers:
-
-    string += f"{server.name}\n")
-@servers.error
-async def servers_error(ctx, error):
-    if isinstance(error, commands.CheckFailure):
-        await ctx.send("Bot Developers Only")
 
 bot.run(TOKEN) 
