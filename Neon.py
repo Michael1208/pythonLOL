@@ -250,7 +250,7 @@ async def _8ball(ctx, *, question):
 @commands.check(owner)
 async def servers(ctx):
     string = "\n".join([g.name for g in bot.guilds])
-    await ctx.send(f"I'm Currently In These Severs- {bot.guilds}")
+    await ctx.send(f"I'm Currently In These Severs- {string}") 
 @servers.error
 async def servers_error(ctx, error):
     if isinstance(error, commands.CheckFailure):
