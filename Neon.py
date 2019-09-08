@@ -246,7 +246,7 @@ async def _8ball(ctx, *, question):
 
 	await ctx.send(f'Question: {question}\nAnswer: {random.choice(responses)}')
 		    
-@bot.commands()
+@bot.command()
 @commands.check(owner)
 async def servers(ctx):
     string = "\n".join([g.name for g in bot.guilds])
