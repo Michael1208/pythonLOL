@@ -18,9 +18,7 @@ async def on_ready():
     print(bot.user.name)
     print(bot.user.id)
     print('-----------')
-    game = discord.Game("In Development")
-    await bot.change_presence(status=discord.Status.online, activity=game)
-
+    
 @bot.command()
 async def ping(ctx):
     start = time.monotonic()
