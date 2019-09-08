@@ -178,7 +178,7 @@ async def balance(ctx):
 
 @bot.command()
 async def userinfo(ctx, member: discord.Member = None):
-    member = ctx.author if not member else member	
+        member = ctx.author if not member else member	
 	roles = [role for role in member.roles]	
 	embed = discord.Embed(colour=member.color, timestamp=ctx.message.created_at)
 	embed.set_author(name=f"User Info - {member}")
