@@ -177,9 +177,9 @@ async def balance(ctx):
     await bot.reply(f'you have {currency.data[member.id]} {currency.data["name"]}')
 
 @bot.command()
-async def userinfo(ctx, member: discord.Member = None):
-        member = ctx.author if not member else member	
-	roles = [role for role in member.roles]
+async def userinfo(ctx, member: discord.Member):       
+	
+    roles = [role for role in member.roles]
                     
 	embed = discord.Embed(colour=member.color, timestamp=ctx.message.created_at)
 	embed.set_author(name=f"User Info - {member}")
