@@ -18,7 +18,17 @@ async def on_ready():
     print(bot.user.name)
     print(bot.user.id)
     print('-----------')
-  
+
+@tasks.loop(seconds=15)
+async def change_status():
+	await bot.change_presence(activity=discord.Game(next(status)))
+	
+@bot.event
+async def on_ready():
+        status = cycle(['n.help',f'{len(bot.guilds)} Servers!',f'{len(bot.users)} Users!'])	
+        change_status.start()	               
+        print("Neon has started!")	
+			  
 def owner(ctx):
     return ctx.author.id == 349499497774055429 or 505366642230951984
     
