@@ -234,7 +234,7 @@ async def servers(ctx):
 		    
 @bot.command()
 async def helpmod(ctx):
-     embed = discord.Embed(title="Mod Help", color=0x6AA84F)               	   
+    embed = discord.Embed(title="Mod Help", color=0x6AA84F)               	   
     embed.set_thumbnail(url="https://cdn.discordapp.com/avatars/616619124730363924/6721a098ceee307c2a32ba8de4332ff0.png?")
     embed = discord.Embed(title="Neon - Moderation Commands", color=0x6AA84F)
     embed.add_field(name="``n.ban``", value=" ``Bans a user from the server (Requires Ban Permissions!)", inline=False)
@@ -247,7 +247,7 @@ async def helpmod(ctx):
 
 @bot.command(aliases=['ghelp'])
 async def helpgeneral(ctx):
-     embed = discord.Embed(title="General Help", color=0x6AA84F)               
+    embed = discord.Embed(title="General Help", color=0x6AA84F)               
     embed.set_thumbnail(url="https://cdn.discordapp.com/avatars/616619124730363924/6721a098ceee307c2a32ba8de4332ff0.png?")
     embed = discord.Embed(title="Neon - General Commands", color=0x6AA84F)
     embed.add_field(name="**8Ball**", value="Ask a question recieve your fortune", inline=False)
