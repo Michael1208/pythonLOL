@@ -245,7 +245,7 @@ async def helpmod(ctx):
     await ctx.send(embed=embed)
 
 @bot.command(aliases=['help general']
-async def helpgeneral(ctx):
+async def help general(ctx):
     embed.set_thumbnail(url="https://cdn.discordapp.com/avatars/616619124730363924/6721a098ceee307c2a32ba8de4332ff0.png?")
     embed = discord.Embed(title="Neon - General Commands", color=0x6AA84F)
     embed.add_field(name="**8Ball**", value="Ask a question recieve your fortune", inline=False)
