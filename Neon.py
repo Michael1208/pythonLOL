@@ -65,7 +65,7 @@ async def help(ctx):
 
 @tasks.loop(seconds=15)
 async def change_status():
-  await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching,(next(bot.status)))
+  await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching(next(bot.status)))
 
 @bot.event
 async def on_ready():
