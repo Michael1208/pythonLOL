@@ -18,17 +18,7 @@ async def on_ready():
     print(bot.user.name)
     print(bot.user.id)
     print('-----------')
-
-@tasks.loop(seconds=15)
-async def change_status():
-	await bot.change_presence(activity=discord.Game(next(status)))
-	
-@bot.event
-async def on_ready():
-        status = cycle(['n.help',f'{len(bot.guilds)} Servers!',f'{len(bot.users)} Users!'])	
-        change_status.start()	               
-        print("Neon has started!")	
-			  
+  
 def owner(ctx):
     return ctx.author.id == 349499497774055429 or 505366642230951984
     
@@ -254,9 +244,11 @@ async def helpmod(ctx):
     embed.add_field(name="``n.unmute``", value="Unmutes a user on the server that was muted (Requires Mute Permissions!)", inline=False)
     await ctx.send(embed=embed)
 
-@bot.command()
+@bot.command(aliases=['help general']
 async def helpgeneral(ctx):
     embed.set_thumbnail(url="https://cdn.discordapp.com/avatars/616619124730363924/6721a098ceee307c2a32ba8de4332ff0.png?")
+    embed = discord.Embed(title="Neon - General Commands", color=0x6AA84F)
+    embed.add_field(name="**8Ball**", value="Ask a question recieve your fortune", inline=False)
+    await ctx.send(embed=embed)
     
-
 bot.run(TOKEN)
