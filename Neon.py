@@ -67,7 +67,7 @@ async def help(ctx):
 async def change_status():
   await bot.change_presence(activity=discord.Game(next(status)))
 
-@client.event
+@bot.event
 async def on_ready():
         bot.status = cycle(['n.help',f'{len(bot.guilds)} Servers',f'{len(bot.users)} Users'])			    
         change_status.start()	               
