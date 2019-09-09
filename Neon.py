@@ -62,16 +62,6 @@ async def help(ctx):
     embed.add_field(name="**Invite Neon**", value="[Invite Neon](https://discordapp.com/oauth2/authorize?client_id=616619124730363924&scope=bot&permissions=2146958847)", inline=False)
     await ctx.send(embed=embed)
 
-@tasks.loop(seconds=15)
-async def change_status():
-  await bot.change_presence(activity=discord.Game(next(status)))
-
-@bot.event
-async def on_ready():
-        status = cycle(['n.help',f'{len(bot.guilds)} Servers!','f'{len(bot.users)} Users!'])	
-        change_status.start()	               
-        print("Neon has started!")
-
 @bot.command()
 @commands.has_permissions(administrator=True)
 async def echo(ctx, *, text=None):
@@ -253,12 +243,15 @@ async def servers(ctx):
     string = "\n".join([f"Server: {g.name} Users: {len(g.members)}" for g in bot.guilds])
     await ctx.send(f"I'm Currently In These Severs- \n {string}") 
 		    
-
-                   
-
-
- 
-		    
-		 
+@bot.command()
+async def helpmod(ctx):
+    embed = discord.Embed(title="Neon - Moderation Commands", color=0x6AA84F)
+    embed.add_field(name="``n.ban``", value=" ``Bans a user from the server (Requires Ban Permissions!)", inline=False)
+    embed.add_field(name="``n.unban``",     value="``Unbans a user that was banned from the server (Requires Ban Permissions!)", inline=False)
+    embed.add_field(name="``n.kick``", value="Kicks a user from the server (Requires Kick Permissions!)", inline=False)
+    embed.add_field(name="``n.purge``", value="Clears (amount) of message (Requires Manage Messages Permissions!)", inline=False)
+    embed.add_field(name="``n.mute``", value="Mutes a user on the server (Requires Mute Permissions!)", inline=False)
+    embed.add_field(name="``n.unmute``", value="Unmutes a user on the server that was muted (Requires Mute Permissions!)", inline=False)
+    await ctx.send(embed=embed)
 
 bot.run(TOKEN)
