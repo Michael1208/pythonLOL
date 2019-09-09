@@ -44,6 +44,7 @@ async def purge(ctx, amount=5):
 
 @bot.command()
 async def help(ctx):
+    embed.set_thumbnail(url="https://cdn.discordapp.com/avatars/616619124730363924/6721a098ceee307c2a32ba8de4332ff0.png?")
     embed = discord.Embed(title="Neon - Help & Documentation", color=0x6AA84F) 
     embed.add_field(name='**General Commands**', value=" ``n.help general`` - Sends you the general commands", inline=False) 
     embed.add_field(name="**Moderation Commands**", value="``n.helpmod`` - Sends you the moderation commands", inline=False) 
@@ -233,6 +234,7 @@ async def servers(ctx):
 		    
 @bot.command()
 async def helpmod(ctx):
+    embed.set_thumbnail(url="https://cdn.discordapp.com/avatars/616619124730363924/6721a098ceee307c2a32ba8de4332ff0.png?")
     embed = discord.Embed(title="Neon - Moderation Commands", color=0x6AA84F)
     embed.add_field(name="``n.ban``", value=" ``Bans a user from the server (Requires Ban Permissions!)", inline=False)
     embed.add_field(name="``n.unban``",     value="``Unbans a user that was banned from the server (Requires Ban Permissions!)", inline=False)
@@ -241,5 +243,10 @@ async def helpmod(ctx):
     embed.add_field(name="``n.mute``", value="Mutes a user on the server (Requires Mute Permissions!)", inline=False)
     embed.add_field(name="``n.unmute``", value="Unmutes a user on the server that was muted (Requires Mute Permissions!)", inline=False)
     await ctx.send(embed=embed)
+
+@bot.command()
+async def helpgeneral(ctx):
+    embed.set_thumbnail(url="https://cdn.discordapp.com/avatars/616619124730363924/6721a098ceee307c2a32ba8de4332ff0.png?")
+    
 
 bot.run(TOKEN)
