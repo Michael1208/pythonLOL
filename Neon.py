@@ -151,11 +151,11 @@ async def unmute_error(ctx, error):
 
 @bot.command()
 async def invite(ctx):
-	embed = discord.Embed(title="Neon - Invites", color=0x6AA84F)
-        embed.set_thumbnail(url="https://cdn.discordapp.com/avatars/616619124730363924/6721a098ceee307c2a32ba8de4332ff0.png?")
-	embed.add_field(name='**Invite Neon**', value="[Invite Neon](https://discordapp.com/oauth2/authorize?client_id=616619124730363924&scope=bot&permissions=2146958847)", inline=False)
-	embed.add_field(name='**Support Server**', value="[Support](https://discord.gg/WqtTxNV)", inline=False)
-	await ctx.send(embed=embed)
+    embed = discord.Embed(title="Neon - Invites", color=0x6AA84F)
+    embed.set_thumbnail(url="https://cdn.discordapp.com/avatars/616619124730363924/6721a098ceee307c2a32ba8de4332ff0.png?")
+    embed.add_field(name='**Invite Neon**', value="[Invite Neon](https://discordapp.com/oauth2/authorize?client_id=616619124730363924&scope=bot&permissions=2146958847)", inline=False)
+    embed.add_field(name='**Support Server**', value="[Support](https://discord.gg/WqtTxNV)", inline=False)
+    await ctx.send(embed=embed)
 
 @bot.command()
 async def botinfo(ctx):
