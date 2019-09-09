@@ -43,9 +43,9 @@ async def purge(ctx, amount=5):
 	await ctx.channel.purge(limit=amount)
 
 @bot.command()
-async def help(ctx):
+async def help(ctx):    
+    embed = discord.Embed(title="Neon - Help & Documentation", color=0x6AA84F)
     embed.set_thumbnail(url="https://cdn.discordapp.com/avatars/616619124730363924/6721a098ceee307c2a32ba8de4332ff0.png?")
-    embed = discord.Embed(title="Neon - Help & Documentation", color=0x6AA84F) 
     embed.add_field(name='**General Commands**', value=" ``n.help general`` - Sends you the general commands", inline=False) 
     embed.add_field(name="**Moderation Commands**", value="``n.helpmod`` - Sends you the moderation commands", inline=False) 
     embed.add_field(name="**Invite Neon**", value="[Invite Neon](https://discordapp.com/oauth2/authorize?client_id=616619124730363924&scope=bot&permissions=2146958847)", inline=False) 
