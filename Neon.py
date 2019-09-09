@@ -68,7 +68,7 @@ async def change_status():
 
 @bot.event
 async def on_ready():
-  bot.status = cycle(['n.help',f'{len(bot.guilds)} Servers',f'{len(bot.users)} Users'])
+  bot.status = cycle(['n.help',Watching over f'{len(bot.guilds)} Servers',Watching Over f'{len(bot.users)} Users'])
   change_status.start()
   print("Neon has started!")
 
