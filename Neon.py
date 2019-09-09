@@ -68,7 +68,7 @@ async def change_status():
   await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching(next(bot.status)))
 
 @bot.event
-async def on_ready():
+async def on_ready():                            
   bot.status = cycle(['n.help',f'{len(bot.guilds)} Servers',f'{len(bot.users)} Users'])
   change_status.start()
   print("Neon has started!")
