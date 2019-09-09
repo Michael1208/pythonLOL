@@ -25,6 +25,7 @@ def owner(ctx):
 @bot.command()
 async def ping(ctx):
     start = time.monotonic()
+    embed.set_thumbnail(url="https://cdn.discordapp.com/avatars/616619124730363924/6721a098ceee307c2a32ba8de4332ff0.png?")
     embed = discord.Embed(title="Neon's Ping!", color=0x0084FD)
     embed.add_field(name="latency", value="{} ms".format(int(ctx.bot.latency*1000)))
     await ctx.send(embed=embed)
@@ -45,6 +46,7 @@ async def purge(ctx, amount=5):
 @bot.command()
 async def help(ctx):
     embed = discord.Embed(title="Neon - Help & Documentation", color=0x6AA84F)
+    embed.set_thumbnail(url="https://cdn.discordapp.com/avatars/616619124730363924/6721a098ceee307c2a32ba8de4332ff0.png?")
     embed.add_field(name='**n.help**', value="Show this message", inline=False)
     embed.add_field(name="**n.ping**",     value="Returns pong!", inline=False)
     embed.add_field(name="**n.purge**", value="Purges (amount) of messages! (Requires Manage Messages)", inline=False)
@@ -64,11 +66,11 @@ async def help(ctx):
 @tasks.loop(seconds=15)
 async def change_status():
   await bot.change_presence(
-      activity=discord.Game(next(bot.status)))
+      activity=discord.Watching(next(bot.status)))
 
 @bot.event
 async def on_ready():
-  bot.status = cycle(['n.help',Watching over f'{len(bot.guilds)} Servers',Watching Over f'{len(bot.users)} Users'])
+  bot.status = cycle(['n.help',f'{len(bot.guilds)} Servers',f'{len(bot.users)} Users'])
   change_status.start()
   print("Neon has started!")
 
@@ -150,6 +152,7 @@ async def unmute_error(ctx, error):
 @bot.command()
 async def invite(ctx):
 	embed = discord.Embed(title="Neon - Invites", color=0x6AA84F)
+    embed.set_thumbnail(url="https://cdn.discordapp.com/avatars/616619124730363924/6721a098ceee307c2a32ba8de4332ff0.png?")
 	embed.add_field(name='**Invite Neon**', value="[Invite Neon](https://discordapp.com/oauth2/authorize?client_id=616619124730363924&scope=bot&permissions=2146958847)", inline=False)
 	embed.add_field(name='**Support Server**', value="[Support](https://discord.gg/WqtTxNV)", inline=False)
 	await ctx.send(embed=embed)
@@ -158,7 +161,7 @@ async def invite(ctx):
 async def botinfo(ctx):
     embed=discord.Embed(title='[Support Server](https://discord.gg/WqtTxNV)', description="**About Neon Bot**", color=0xff3899)
     embed.set_author(name="Neon Bot")
-    embed.set_thumbnail(url="https://cdn.discordapp.com/avatars/616619124730363924/6ad4db462a2e98a94b69dc5a8bd7534f.png?")
+    embed.set_thumbnail(url="https://cdn.discordapp.com/avatars/616619124730363924/6721a098ceee307c2a32ba8de4332ff0.png?")
     embed.add_field(name='What Is Neon', value="Neon Is A Bot Coded In Discord.py Rewrite It Has Multiple Features Such As Moderation, Fun And, Music (Music In Development)" , inline=False)
     embed.add_field(name='The Bot Owners', value="Bot Developers", inline=True)
     embed.add_field(name='Kyle♡#1849', value="Kyle Is Just An Average Guy Born On December 9th 2004 Who Likes To Code And Use Discord", inline=False)
@@ -251,10 +254,9 @@ async def _8ball(ctx, *, question):
 async def servers(ctx):
     string = "\n".join([f"Server: {g.name} Users: {len(g.members)}" for g in bot.guilds])
     await ctx.send(f"I'm Currently In These Severs- \n {string}") 
-@servers.error
-async def servers_error(ctx, error):
-    if isinstance(error, commands.CheckFailure):
-        await ctx.send("Bot Developers Only")
+else await ctx.send(f"Bot Developers Only")
+                   
+
 
  
 		    
