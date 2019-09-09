@@ -25,7 +25,6 @@ def owner(ctx):
 @bot.command()
 async def ping(ctx):
     start = time.monotonic()
-    embed.set_thumbnail(url="https://cdn.discordapp.com/avatars/616619124730363924/6721a098ceee307c2a32ba8de4332ff0.png?")
     embed = discord.Embed(title="Neon's Ping!", color=0x0084FD)
     embed.add_field(name="latency", value="{} ms".format(int(ctx.bot.latency*1000)))
     await ctx.send(embed=embed)
