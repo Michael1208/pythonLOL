@@ -244,8 +244,8 @@ async def helpmod(ctx):
     embed.add_field(name="``n.unmute``", value="Unmutes a user on the server that was muted (Requires Mute Permissions!)", inline=False)
     await ctx.send(embed=embed)
 
-@bot.command(aliases=['helpgeneral']
-async def help general(ctx):
+@bot.command(aliases=['help']
+async def helpgeneral(ctx):
     embed.set_thumbnail(url="https://cdn.discordapp.com/avatars/616619124730363924/6721a098ceee307c2a32ba8de4332ff0.png?")
     embed = discord.Embed(title="Neon - General Commands", color=0x6AA84F)
     embed.add_field(name="**8Ball**", value="Ask a question recieve your fortune", inline=False)
