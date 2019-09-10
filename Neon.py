@@ -149,13 +149,13 @@ async def invite(ctx):
 
 @bot.command()
 async def botinfo(ctx):
-    embed=discord.Embed(title='[Support Server](https://discord.gg/WqtTxNV)', description="**About Neon Bot**", color=0xff3899)
+    embed=discord.Embed(title='[Support Server](https://discord.gg/WqtTxNV))', description="**About Neon Bot**", color=0xff3899)
     embed.set_author(name="Neon Bot")
     embed.set_thumbnail(url="https://cdn.discordapp.com/avatars/616619124730363924/6721a098ceee307c2a32ba8de4332ff0.png?")
     embed.add_field(name='What Is Neon', value="Neon Is A Bot Coded In Discord.py Rewrite It Has Multiple Features Such As Moderation, Fun And, Music (Music In Development)" , inline=False)
     embed.add_field(name='The Bot Owners', value="Bot Developers", inline=True)
-    embed.add_field(name='Kyle♡#1849', value="Kyle Is Just An Average Guy Born On December 9th 2004 Who Likes To Code And Use Discord", inline=False)
-    embed.add_field(name='Michael♡#3910', value="Michael Is Again Just An Average Guy Who Likes Coding Born June 8th 2005", inline=False)
+    embed.add_field(name='Kyle♡#1849', value="Kyle Is Just An Average Guy Born On December 9th, Who Likes To Code And Use Discord", inline=False)
+    embed.add_field(name='Michael♡#3910', value="Michael Is Again Just An Average Guy Who Likes Coding Born June 8th", inline=False)
     embed.set_footer(text='Neon Bot')
     await ctx.send(embed=embed)
 										
@@ -255,7 +255,9 @@ async def helpmod(ctx):
     embed.add_field(name="``n.purge``", value="Clears (amount) of message (Requires Manage Messages Permissions!)", inline=False)
     embed.add_field(name="``n.mute``", value="Mutes a user on the server (Requires Mute Permissions!)", inline=False)
     embed.add_field(name="``n.unmute``", value="Unmutes a user on the server that was muted (Requires Mute Permissions!)", inline=False)
+    embed.add_field(name="``n.setnick``", value="Changes a user nickname on the server(Requires Manage Nicknames Permissions!)", inline=False)
     await ctx.send(embed=embed)
+
 
 @bot.command(aliases=['ghelp'])
 async def helpgeneral(ctx):                   
@@ -271,5 +273,13 @@ async def helpinfo(ctx):
     embed.add_field(name="**n.ping**", value="Get the bot's latency", inline=False)
     embed.add_field(name="**n.invite**", value="Sends invites to the support server and to invite the bot", inline=False)
     await ctx.send(embed=embed)
+
+@bot.command()
+async def upvote(ctx):
+    embed = discord.Embed(title="Neon - Upvote Links", color=0x6AA84F)
+    embed.add_field(name="**[DBL](https://discordbots.org/bot/616619124730363924)**", value="Upvote the bot on Discord Bot List", inline=False)
+    embed.add_field(name="**[DB](https://discord.boats/bot/616619124730363924)**", value="Upvote the bot on Discord Bot List", inline=False)
+    await ctx.send(embed=embed)
+
 
 bot.run(TOKEN)
