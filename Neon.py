@@ -77,7 +77,7 @@ async def echo_error(ctx, error):
 async def join(ctx):
 	channel = ctx.message.author.voice.voice_channel
 	print(channel)
-   await bot.join_voice_channel(channel)
+        await bot.join_voice_channel(channel)
 	
 @bot.command(pass_context=True)
 async def leave(ctx):
