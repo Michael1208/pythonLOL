@@ -149,7 +149,7 @@ async def invite(ctx):
 
 @bot.command()
 async def botinfo(ctx):
-    embed=discord.Embed(title='[Support Server](https://discord.gg/WqtTxNV))', description="**About Neon Bot**", color=0xff3899)
+    embed=discord.Embed(title='[Support](https://discord.gg/WqtTxNV))', description="**About Neon Bot**", color=0xff3899) Server
     embed.set_author(name="Neon Bot")
     embed.set_thumbnail(url="https://cdn.discordapp.com/avatars/616619124730363924/6721a098ceee307c2a32ba8de4332ff0.png?")
     embed.add_field(name='What Is Neon', value="Neon Is A Bot Coded In Discord.py Rewrite It Has Multiple Features Such As Moderation, Fun And, Music (Music In Development)" , inline=False)
