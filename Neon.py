@@ -221,7 +221,7 @@ async def level(self, ctx, user: discord.Member = None):
             await ctx.send(embed=embed)
 
 @bot.command()
-@commands.has_permissions(manage_nicknames=True)     
+@has_permissions(manage_nicknames=True)     
 async def setnick(ctx, member: discord.Member, *, nickname):
     await member.edit(nick=f"{nickname}")
     await ctx.send(f'Nickname Changed For {member.mention} ') 
