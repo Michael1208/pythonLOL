@@ -58,8 +58,9 @@ async def purge(ctx, amount=5):
 async def help(ctx):    
     embed = discord.Embed(title="Neon - Help & Documentation", color=0x6AA84F)
     embed.set_thumbnail(url="https://cdn.discordapp.com/avatars/616619124730363924/6721a098ceee307c2a32ba8de4332ff0.png?")
-    embed.add_field(name='**General Commands**', value=" ``n.help general`` - Sends you the general commands", inline=False) 
-    embed.add_field(name="**Moderation Commands**", value="``n.helpmod`` - Sends you the moderation commands", inline=False) 
+    embed.add_field(name='**General**', value=" ``n.helpgeneral`` - Sends you the general commands", inline=False) 
+    embed.add_field(name="**Moderation**", value="``n.helpmod`` - Sends you the moderation commands", inline=False) 
+    embed.add_field(name="**Information**", value="``n.helpinfo`` - Sends you the information commands", inline=False)
     embed.add_field(name="**Invite Neon**", value="[Invite Neon](https://discordapp.com/oauth2/authorize?client_id=616619124730363924&scope=bot&permissions=2146958847)", inline=False) 
     await ctx.send(embed=embed)
 
@@ -257,10 +258,18 @@ async def helpmod(ctx):
     await ctx.send(embed=embed)
 
 @bot.command(aliases=['ghelp'])
-async def helpgeneral(ctx):
-    embed = discord.Embed(title="General Help", color=0x6AA84F)                   
+async def helpgeneral(ctx):                   
     embed = discord.Embed(title="Neon - General Commands", color=0x6AA84F)
-    embed.add_field(name="**8Ball**", value="Ask a question recieve your fortune", inline=False)
+    embed.add_field(name="**n.8Ball**", value="Ask a question recieve your fortune", inline=False)
     await ctx.send(embed=embed)
     
+@bot.command()
+async def helpinfo(ctx):
+    embed = discord.Embed(title="Neon - Information Help", color=0x6AA84F)
+    embed.add_field(name="**n.botinfo**", value="Get information on the bot and the developers", inline=False)
+    embed.add_field(name="**n.userinfo**", value="Get information on a user", inline=False)
+    embed.add_field(name="**n.ping**", value="Get the bot's latency", inline=False)
+    embed.add_field(name="**n.invite**", value="Sends invites to the support server and to invite the bot", inline=False)
+    await ctx.send(embed=embed)
+
 bot.run(TOKEN)
