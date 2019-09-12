@@ -320,9 +320,15 @@ async def on_member_remove(member):
     await channel.send(f"{member.name} left the server")
 
 @bot.command()
-async def suggest(ctx, *, content):
-         bot.get_user(id)
-         await member.send(content)
-         await.ctx.message.delete()
+async def say(ctx, content):
+    if content == ["@everyone"]:
+        await ctx.send("You cannot mention **@**everyone, silly. I don't want to get banned.")
+        pass
+    elif content == ["@here"]:
+        await ctx.send("You cannot mention **@**here, silly. I don't want to get banned.")
+        pass
+    else:
+        await ctx.send(content)
+        await ctx.message.delete()
 
 bot.run(TOKEN)
