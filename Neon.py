@@ -320,13 +320,9 @@ async def on_member_remove(member):
     await channel.send(f"{member.name} left the server")
 
 @bot.command()
-async def level(self, ctx, member: discord.Member = None):
-    member = ctx.author if not member else member
-    member_id = str(member.id)
-
-    if not member_id in self.client:
-       await ctx.send("No level")
-       else:
-       await ctx.send(self.users[member_id]["level"], self.users[member_id]["exp"])
+async def suggest(ctx, *, content):
+         bot.get_user(id)
+         await member.send(content)
+         await.ctx.message.delete()
 
 bot.run(TOKEN)
