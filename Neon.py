@@ -282,10 +282,31 @@ async def upvote(ctx):
     embed.add_field(name="**[DB](https://discord.boats/bot/616619124730363924)**", value="Upvote the bot on Discord Bot List", inline=False)
     await ctx.send(embed=embed)
 
-@bot.command(aliases=['flip', 'coin'])
-async def coinflip(ctx):
-    coinsides = ['Head', 'Tail']
-    result = random.choice(coinsides)
-    await ctx.send(result)
- 
+@bot.command()
+async def announce(ctx):
+
+    channel = discord.utils.get(ctx.guild.text_channels, name="announcements")
+    embed = discord.Embed(
+            timestamp=datetime.datetime.utcnow(),
+            color=discord.Colour.gold()
+    )
+    def check(msg):
+        return msg.author == ctx.author
+
+    await ctx.send("What should the title be?")
+    title = await bot.wait_for("message", check=check)
+
+    await ctx.send("What should the announcement be?")
+    description = await bot.wait_for("message", check=check)
+
+    await ctx.send("Do you want to ping everyone?")
+    ping = await bot.wait_for("message", check=check)
+
+    embed.add_field(name=title.content, value=description.content)
+
+    if ping.content == "yes":
+        await channel.send(ctx.guild.default_role)
+
+    await channel.send(embed=embed)
+
 bot.run(TOKEN)
