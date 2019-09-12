@@ -284,7 +284,7 @@ async def upvote(ctx):
 
 @bot.command(aliases=['flip', 'coin'])
 async def coinflip(ctx):
-  	 coinsides = ['Head', 'Tail']
+    coinsides = ['Head', 'Tail']
     result = random.choice(coinsides)
     await ctx.send(result)
  
