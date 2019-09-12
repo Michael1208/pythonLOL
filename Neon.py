@@ -313,10 +313,10 @@ async def on_member_remove(member):
 @bot.command()
 async def say(ctx, content):
     if content == "@everyone":
-        await ctx.send("You cannot mention **@**everyone, silly. I don't want to get banned.")
+        await ctx.send("Please dont try to mention **@**everyone!")
         return
     elif content == "@here":
-        await ctx.send("You cannot mention **@**here, silly. I don't want to get banned.")
+        await ctx.send("Please dont try to mention **@**here!")
         return
     else:
         await ctx.send(content)
