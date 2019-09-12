@@ -327,6 +327,6 @@ async def level(self, ctx, member: discord.Member = None):
     if not member_id in self.client:
     await ctx.send("No level")
        else:
-    await ctx.send(self.users[member_id]["level"], self.users[member_id]["exp"])
+await ctx.send(self.users[member_id]["level"], self.users[member_id]["exp"])
 
 bot.run(TOKEN)
