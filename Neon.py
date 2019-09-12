@@ -64,15 +64,6 @@ async def help(ctx):
     embed.add_field(name="**Invite Neon**", value="[Invite Neon](https://discordapp.com/oauth2/authorize?client_id=616619124730363924&scope=bot&permissions=2146958847)", inline=False) 
     await ctx.send(embed=embed)
 
-@bot.command()
-@commands.has_permissions(administrator=True)
-async def echo(ctx, *, text=None):
-    await ctx.send(f"{text}")
-@echo.error
-async def echo_error(ctx, error):
-    if isinstance(error, commands.CheckFailure):
-        await ctx.send("Administrator Permission Required")
- 
 @bot.command(pass_context=True)
 async def join(ctx):
     channel = ctx.message.author.voice.voice_channel
