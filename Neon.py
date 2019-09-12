@@ -311,7 +311,7 @@ async def on_member_remove(member):
     await channel.send(f"{member.name} left the server")
 
 @bot.command()
-async def say(ctx, content):
+async def say(ctx,*, content):
     if content == "@everyone":
         await ctx.send("Please dont try to mention **@**everyone!")
         return
