@@ -319,7 +319,7 @@ async def on_member_remove(member):
     channel = discord.utils.get(member.guild.text_channels, name='channelName')
     await channel.send(f"{member.name} left the server")
 
-@commands.command()
+@bot.command()
 async def level(self, ctx, member: discord.Member = None):
     member = ctx.author if not member else member
     member_id = str(member.id)
