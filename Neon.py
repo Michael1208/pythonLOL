@@ -282,5 +282,10 @@ async def upvote(ctx):
     embed.add_field(name="**[DB](https://discord.boats/bot/616619124730363924)**", value="Upvote the bot on Discord Bot List", inline=False)
     await ctx.send(embed=embed)
 
-
+@bot.command(aliases=['flip', 'coin'])
+async def coinflip(ctx):
+  	 coinsides = ['Head', 'Tail']
+    result = random.choice(coinsides)
+    await ctx.send(result)
+ 
 bot.run(TOKEN)
