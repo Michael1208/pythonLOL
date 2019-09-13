@@ -32,7 +32,7 @@ async def change_status():
 
    
 def owner(ctx):
-    return ctx.author.id == 349499497774055429 or 505366642230951984
+    return ctx.author.id in (349499497774055429, 505366642230951984)
     
 @bot.command()
 async def ping(ctx):
@@ -235,7 +235,11 @@ async def _8ball(ctx, *, question):
 @commands.check(owner)
 async def servers(ctx):
     string = "\n".join([f"Server: {g.name} Users: {len(g.members)}" for g in bot.guilds])
-    await ctx.send(f"I'm Currently In These Severs- \n {string}") 
+    await ctx.send(f"I'm Currently In These Severs- \n {string}")
+@mute.error
+async def servers_error(ctx, error):
+    if isinstance(error, commands.CheckFailure):
+        await ctx.send("Error Bot Developers Only")
 		    
 @bot.command()
 async def helpmod(ctx):
