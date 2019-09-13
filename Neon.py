@@ -236,7 +236,7 @@ async def _8ball(ctx, *, question):
 async def servers(ctx):
     string = "\n".join([f"Server: {g.name} Users: {len(g.members)}" for g in bot.guilds])
     await ctx.send(f"I'm Currently In These Severs- \n {string}")
-@mute.error
+@servers.error
 async def servers_error(ctx, error):
     if isinstance(error, commands.CheckFailure):
         await ctx.send("Error Bot Developers Only")
