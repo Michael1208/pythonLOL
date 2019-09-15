@@ -28,7 +28,7 @@ async def on_ready():
 
 @tasks.loop(seconds=15)
 async def change_status():
-    await bot.change_presence(status=discord.Status.idle, activity=discord.Activity(type=discord.ActivityType.watching(next(bot.status))))
+    await bot.change_presence(status=discord.Status.idle, activity=discord.Activity(type=discord.ActivityType.watching, name=(next(bot.status))))
 
    
 def owner(ctx):
