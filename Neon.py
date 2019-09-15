@@ -304,15 +304,6 @@ async def announce(ctx):
 
     await channel.send(embed=embed)
 
-@bot.event
-async def on_member_join(member):
-    channel = discord.utils.get(member.guild.text_channels, name='channelName')
-    await channel.send(f"{member.name} joined the server")
-
-@bot.event
-async def on_member_remove(member):
-    channel = discord.utils.get(member.guild.text_channels, name='channelName')
-    await channel.send(f"{member.name} left the server")
 
 @bot.command()
 async def say(ctx, *, content):
