@@ -12,14 +12,7 @@ bot = commands.Bot(command_prefix='n.')
 TOKEN = os.environ['TOKEN']
 bot.remove_command('help')
 
-@bot.listen()
-async def on_ready():
-    print('Logged in as')
-    print(bot.user.name)
-    print(bot.user.id)
-    print('-----------')
 
-	
 @bot.event
 async def on_ready():       
     async def on_ready():
