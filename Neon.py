@@ -21,15 +21,9 @@ async def on_ready():
 
 	
 @bot.event
-async def on_ready():
-        bot.status = cycle(['n.help',f'{len(bot.guilds)} Servers!', f'{len(bot.users)} Users!'])    
-        change_status.start()                   
-        print("Neon has started!")
-
-@tasks.loop(seconds=15)
-async def change_status():
-    await bot.change_presence(status=discord.Status.online, activity=discord.Activity(type=discord.ActivityType.watching, name=(next(bot.status))))
-
+async def on_ready():       
+    await bot.change_presence(status=discord.Status.online, activity=discord.Activity(type=discord.ActivityType.watching, name=("n.help")))
+    print ("Neon Is Ready")
    
 def owner(ctx):
     return ctx.author.id in (349499497774055429, 505366642230951984)
@@ -318,16 +312,16 @@ async def say(ctx, *, content):
         await ctx.message.delete()
 
 @bot.command()
-async def status(ctx,status,*,game:str=None):
+async def status(ctx,status,*,game:str="n.help"):
     try:
         await ctx.message.delete()
     except: pass
     if status.lower() == "online":
-        await bot.change_presence(activity=discord.Game(name=game))
+        await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name=game))
     if status.lower() == "idle":
-        await bot.change_presence(status=discord.Status.idle,activity=discord.Game(name=game))
+        await bot.change_presence(status=discord.Status.idle,discord.Activity(type=discord.ActivityType.watching, name=game))
     if status.lower() == "dnd":
-        await bot.change_presence(status=discord.Status.dnd,activity=discord.Game(name=game))
+        await bot.change_presence(status=discord.Status.dnd,activity=discord.Activity(type=discord.ActivityType.watching, name=game))
     if status.lower() == "invisible":
         await bot.change_presence(status=discord.Status.invisible,activity=None)
     if status.lower() == "streaming":
