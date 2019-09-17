@@ -317,22 +317,6 @@ async def say(ctx, *, content):
         await ctx.send(content)
         await ctx.message.delete()
 
-
-import discord
-import os
-from discord.ext import commands
-import io, traceback, textwrap
-from contextlib import redirect_stdout
-bot = commands.Bot(command_prefix=os.environ.get("ssb_prefix").replace("\"",""),description="An Instance of XtremeCoder's SuperSelfBot, https://github.com/IngeniousCoder/SuperSelfBot")
-@bot.event
-async def on_ready():
-  await bot.change_presence(activity=discord.Game(name=str(os.environ.get("ssb_game"))))
-  
-  
-@bot.event
-async def on_message(message):
-  if message.author.id == int(os.environ.get("ssb_owner")): await bot.process_commands(message)
-  
 @bot.command()
 async def status(ctx,status,*,game:str=None):
     """Sets the bot status.
