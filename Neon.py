@@ -327,7 +327,7 @@ async def joined(ctx, member: discord.Member):
     await ctx.send('{0.name} joined in {0.joined_at}'.format(member))
 
 @commands.command()
-@has_permissions(PermissionLevel.MODERATOR)
+@has_permissions(manage_messages=True)
 async def warn(self, ctx, member: discord.Member, *, reason: str):
         """Warn a member.
 
