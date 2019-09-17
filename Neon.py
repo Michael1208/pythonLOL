@@ -319,10 +319,6 @@ async def say(ctx, *, content):
 
 @bot.command()
 async def status(ctx,status,*,game:str=None):
-    """Sets the bot status.
-    status can be "online","idle","dnd","invisible","streaming" while game will be the display game.
-    "game" command will reset status to online.
-    """
     try:
         await ctx.message.delete()
     except: pass
