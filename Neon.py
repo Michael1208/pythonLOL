@@ -317,4 +317,9 @@ async def say(ctx, *, content):
         await ctx.send(content)
         await ctx.message.delete()
 
+@bot.command(aliases=['cc'])
+async def create-channel(ctx):
+    channel = await guild.create_text_channel('test-LOL')
+    await ctx.send(Channel has been created!)
+
 bot.run(TOKEN)
