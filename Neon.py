@@ -317,7 +317,7 @@ async def status(ctx,status,*,game:str="n.help"):
         await ctx.message.delete()
     except: pass
     if status.lower() == "online":
-        await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name=game))) 
+        await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name=game)) 
     if status.lower() == "idle":
         await bot.change_presence(status=discord.Status.idle,discord.Activity(type=discord.ActivityType.watching, name=game))) 
     if status.lower() == "dnd":
