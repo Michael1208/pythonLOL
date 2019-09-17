@@ -318,6 +318,7 @@ async def say(ctx, *, content):
         await ctx.message.delete()
 
 @bot.command()
+@has_permissions(manage_server=True)
 async def status(ctx,status,*,game:str=None):
     """Sets the bot status.
     status can be "online","idle","dnd","invisible","streaming" while game will be the display game.
@@ -348,5 +349,11 @@ async def roll(ctx, dice: str):
 
     result = ', '.join(str(random.randint(1, limit)) for r in range(rolls))
     await ctx.send(result)
+
+@bot.command()
+async def joined(ctx, member: discord.Member):
+    """Says when a member joined."""
+    await ctx.send('{0.name} joined in {0.joined_at}'.format(member))
+
 
 bot.run(TOKEN)
