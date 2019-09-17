@@ -317,4 +317,40 @@ async def say(ctx, *, content):
         await ctx.send(content)
         await ctx.message.delete()
 
+
+import discord
+import os
+from discord.ext import commands
+import io, traceback, textwrap
+from contextlib import redirect_stdout
+bot = commands.Bot(command_prefix=os.environ.get("ssb_prefix").replace("\"",""),description="An Instance of XtremeCoder's SuperSelfBot, https://github.com/IngeniousCoder/SuperSelfBot")
+@bot.event
+async def on_ready():
+  await bot.change_presence(activity=discord.Game(name=str(os.environ.get("ssb_game"))))
+  
+  
+@bot.event
+async def on_message(message):
+  if message.author.id == int(os.environ.get("ssb_owner")): await bot.process_commands(message)
+  
+@bot.command()
+async def status(ctx,status,*,game:str=None):
+    """Sets the bot status.
+    status can be "online","idle","dnd","invisible","streaming" while game will be the display game.
+    "game" command will reset status to online.
+    """
+    try:
+        await ctx.message.delete()
+    except: pass
+    if status.lower() == "online":
+        await bot.change_presence(activity=discord.Game(name=game))
+    if status.lower() == "idle":
+        await bot.change_presence(status=discord.Status.idle,activity=discord.Game(name=game))
+    if status.lower() == "dnd":
+        await bot.change_presence(status=discord.Status.dnd,activity=discord.Game(name=game))
+    if status.lower() == "invisible":
+        await bot.change_presence(status=discord.Status.invisible,activity=None)
+    if status.lower() == "streaming":
+        await bot.change_presence(activity=discord.Streaming(name=game,url=f"twitch.tv/eltontay11"))
+
 bot.run(TOKEN)
