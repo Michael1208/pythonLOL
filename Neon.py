@@ -315,7 +315,7 @@ async def roll(ctx, dice: str):
     try:
         rolls, limit = map(int, dice.split('d'))
     except Exception:
-        await ctx.send('Format has to be in NdN!')
+        await ctx.send('Usage: n.roll (random number) | Example: n.roll 6!')
         return
 
     result = ', '.join(str(random.randint(1, limit)) for r in range(rolls))
@@ -326,59 +326,13 @@ async def joined(ctx, member: discord.Member):
     """Says when a member joined."""
     await ctx.send('{0.name} joined in {0.joined_at}'.format(member))
 
-@commands.command()
-@has_permissions(manage_messages=True)
-async def warn(self, ctx, member: discord.Member, *, reason: str):
-        """Warn a member.
 
-        Usage:
-        {prefix}warn @member Spoilers
-        """
 
-        if member.bot:
-            return await ctx.send("Bots can't be warned.")
+@bot.command()
+async def uptime(ctx):
+  t_2_uptime = time.perf_counter()
+  time_delta = round((t_2_uptime-t_1_uptime)*1000)
+  await ctx.send("I have been up for `{}`!".format(GetTime(time_delta/1000)))
 
-        channel_config = await self.db.find_one({"_id": "config"})
-
-        if channel_config is None:
-            return await ctx.send("There's no configured log channel.")
-        else:
-            channel = ctx.guild.get_channel(int(channel_config["logs"]["channel"]))
-
-        if channel is None:
-            return
-
-        config = await self.db.find_one({"_id": "warns"})
-
-        if config is None:
-            config = await self.db.insert_one({"_id": "warns"})
-
-        try:
-            userwarns = config[str(member.id)]
-        except KeyError:
-            userwarns = config[str(member.id)] = []
-
-        if userwarns is None:
-            userw = []
-        else:
-            userw = userwarns.copy()
-
-        userw.append({"reason": reason, "mod": ctx.author.id})
-
-        await self.db.find_one_and_update(
-            {"_id": "warns"}, {"$set": {str(member.id): userw}}, upsert=True
-        )
-
-        await ctx.send(
-            f"Successfully warned **{member.name}#{member.discriminator}**\n`{reason}`"
-        )
-
-        await channel.send(
-            embed=self.generateWarnEmbed(
-                str(member.id), str(ctx.author.id), len(userw), reason
-            )
-        )
-        del userw
-        return
 
 bot.run(TOKEN)
