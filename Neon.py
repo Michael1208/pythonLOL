@@ -325,14 +325,5 @@ async def roll(ctx, dice: str):
 async def joined(ctx, member: discord.Member):
     """Says when a member joined."""
     await ctx.send('{0.name} joined in {0.joined_at}'.format(member))
-
-
-
-@bot.command()
-async def uptime(ctx):
-  t_2_uptime = time.perf_counter()
-  time_delta = round((t_2_uptime-t_1_uptime)*1000)
-  await ctx.send("I have been up for `{}`!".format(GetTime(time_delta/1000)))
-
-
+		    
 bot.run(TOKEN)
