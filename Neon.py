@@ -327,7 +327,7 @@ async def joined(ctx, member: discord.Member):
     await ctx.send('{0.name} joined in {0.joined_at}'.format(member))
 
 @commands.command(pass_context=True, hidden=True, name='eval', aliases=['evaluate'])
-    async def _eval(self, ctx, *, body: str):
+async def _eval(self, ctx, *, body: str):
         """Evaluates a piece of code"""
         env = {
             'bot': self.bot,
