@@ -7,6 +7,7 @@ import random
 import os
 from discord.ext import commands, tasks
 from itertools import cycle
+import operator
 
 bot = commands.Bot(command_prefix='n.')
 TOKEN = os.environ['TOKEN']
