@@ -337,5 +337,38 @@ async def _eval(self, ctx, *, body: str):
             'guild': ctx.guild,
             'message': ctx.message,
             '_': self._last_result
-        }
+	}
+	
+@bot.command()
+async def lb():
+    """Actual leaderboard, ranking people by worth."""
+    ans = "__**Worth:**__\n"
+    global Matrix
+    tempmat = Matrix
+    temp = [0 for x in range(h)]
+    for x in range(h):
+        temp[x] = int(tempmat[x][2])
+    for x in range(h):
+        tempmat[x][2] = int(temp[x])
+    tempmat = sorted(tempmat, key=operator.itemgetter(2), reverse=True)
+    for n in range(h):
+        if(tempmat[n][0] != str(0)):
+            ans += "**"+tempmat[n][0]+"** is worth $"+str(tempmat[n][2])+".\n"
+    await bot.say(ans)
+    await bot.say("\n\n __**Number of Waifus Owned:**__\n")
+    temp = [[0 for x in range(2)] for y in range(h)]
+    for n in range(h):
+        temp[n][0] = Matrix[n][0]
+    for x in range(0,h):
+        for n in range(0,h):
+            if Matrix[x][3] == str(temp[n][0]):
+                temp[n][1] += 1
+    #await bot.say(temp)
+    temp = sorted(temp, key=operator.itemgetter(1), reverse=True)
+    ans = ""
+    for n in range(h):
+        if(temp[n][0] != str(0)):
+            ans += "**"+temp[n][0]+"** owns "+str(temp[n][1])+" waifus.\n"
+    await bot.say(ans)
+		    
 bot.run(TOKEN)
